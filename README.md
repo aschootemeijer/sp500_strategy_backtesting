@@ -1,5 +1,5 @@
 ## S&P500 Strategy Backtesting
-![Python Version](https://img.shields.io)
+![Python](https://img.shields.io)
 ![Pandas](https://img.shields.io)
 ![NumPy](https://img.shields.io)
 ![Matplotlib](https://img.shields.io)
