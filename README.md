@@ -23,7 +23,7 @@ The framework is built with a modular, object-oriented programming (OOP) approac
 - data_loader.py: The current S&P 500 stocks are obtained from Wikipedia using web scraping. Their data is then automatically ingested via Yahoo Finance.
 - feature_engineer.py: Transformation of raw time-series data into technical indicators and signals.
 - analyse_stocks.py: The buying signal generation engine and performance calculator for individual stocks
-- eval_results.py: evaluates the performance of an enseble of stocks (strategy or control)
+- eval_results.py: evaluates the performance of an ensemble of stocks (strategy or control)
 - plotter.py: Visualization engine for side-by-side comparison of strategy vs. control equity curves.
 
 ### Result highlight
@@ -34,7 +34,7 @@ Investigated the "Momentum" strategy for a buy signal that triggers if an S&P500
 ### Future work
 - The result presented above contains many stocks for which the buy signal triggered in the post-covid-plunge (stock) recovery period. Would the result hold if the year 2020 is excluded from the analysis?
 - Some stocks have been taken out of the S&P500 over time. One can include these by using the log of changes to the Wikipedia S&P500 website. I expect especially the analysis of "Declining" and "Early_recovery" strategy stocks to benefit from this.
-- Thanks to the OOP design of the code, it is straightforward to extend it to systematically explore the variables used for buy signal generation (e.g., for the "Momentum" strategy, these variables are how much the stock price increases and in which time period). This allows for the optimization of these strategies.
+- Thanks to the OOP design of the code, it is straightforward to extend it to systematically explore the variables used for buy signal generation (e.g., for the "Momentum" strategy, these variables are how much the stock price increases and in which time period). All that is needed for this is adding one line with a for loop after the "if __name__ is '__main__':" line (per explored variable). This allows for the optimization of these strategies.
 
 <!-- One can simply change:
 if __name__ == '__main__':
