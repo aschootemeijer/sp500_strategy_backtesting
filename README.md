@@ -1,4 +1,9 @@
 ## S&P500 Strategy Backtesting
+![Python Version](https://img.shields.io)
+![Pandas](https://img.shields.io)
+![NumPy](https://img.shields.io)
+![Matplotlib](https://img.shields.io)
+![Requests](https://img.shields.io)
 
 ### Project goal
 Leveraging my background in astrophysics, I designed this python code to investigate market dynamics of the S&P500. The code for the isolation of signal from noise through statistical validation.
