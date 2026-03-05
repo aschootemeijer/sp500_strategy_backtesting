@@ -28,7 +28,7 @@ The framework is built with a modular, object-oriented programming (OOP) approac
 
 ### Result highlight
 Investigated the "Momentum" strategy for a buy signal that triggers if an S&P500 stock has increased by at least 50% for two successive 50 day periods. The stocks are sold half a year after the buy signal triggers. For each stock, up to five control stocks were bought with a random offset of +/- 100 days. Result: 48.7% yearly increase for the 33 "Momentum" strategy stocks, and 26.5% yearly increase for the 139 control stocks. The control stocks increased more than the typical S&P500 value of ~11% because they were bought at relatively favorable times. The "Momentum" stocks outperformed the control stocks by rather large margin.
-<img width="1100" height="500" alt="mom_50d_f1p4_dcon100d" src="https://github.com/user-attachments/assets/9385f7c9-eeab-4aa6-aa64-2f8c86851eba" />
+<img width="550" height="250" alt="mom_50d_f1p4_dcon100d" src="https://github.com/user-attachments/assets/9385f7c9-eeab-4aa6-aa64-2f8c86851eba" />
 
 
 ### Future work
