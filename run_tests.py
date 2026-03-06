@@ -52,7 +52,7 @@ class BackTester:
         Evaluates the chosen STRATEGY for a specific stock. 
         This method will be called by the run_test(...) method below        
  
-        Arguments: stock_ticker (b.v. 'MSFT')
+        Arguments: stock_ticker (for example, 'MSFT' for Microsoft)
         Returns:   - stock data ( i. over whole considered period and ii. between buy and sell signal), 
                    - results of evaluation: stock value ratio at sell/buy moment, holding period, yearly increase
                    - date the buy signal triggered
@@ -133,8 +133,6 @@ class BackTester:
         plotter.prettify_and_show( ax1,ax2,self.strategy,strategy_avg_yrly_incr_in_perc,control_avg_yrly_incr_in_perc )
                 
 
-# WAAROM KLEIN VERSCHIL TUSSEN STRAT 1YR AVG_YRLY en TOTAL_INCR?
-            
 if __name__ == '__main__':
     momtest = BackTester( strategy, sector, years_back, track_time, momentum_factor, momentum_interval_in_days, 
                           frac_remaining, frac_bump, n_control, control_offset_in_d )
