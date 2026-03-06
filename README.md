@@ -8,7 +8,7 @@
 
 ### Project goal
 Leveraging my background in astrophysics, I designed this python code to investigate market dynamics of the S&P500. The code can isolate signal from noise through statistical validation.
-This is a framework that allows the user to investigate the effectiveness of different trading strategies in comparison to a control group (random stocks from the S&P500).
+This is an object-oriented programming (OOP)-based framework that allows the user to investigate the effectiveness of different trading strategies in comparison to a control group (random stocks from the S&P500).
 The following strategies can be tested: 
 - "Momentum": do stocks that went up recently stay on the same trajectory?
 - "Decreasing": do stocks that are below a certain percentage of their past maximum value rebound quickly?
@@ -19,7 +19,7 @@ The following strategies can be tested:
 - Statistical Control Groups: Every strategy run is benchmarked against a randomly sampled control group (Monte Carlo style) to distinguish Alpha (outperformance) from Beta (market returns). It is possible to add a random offset in the buying date of the control stock, to make the moment of buying more random.
 
 ### Software Architecture
-The framework is built with a modular, object-oriented programming (OOP) approach following the Separation of Concerns principle:
+The framework is built with a modular, OOP approach following the Separation of Concerns principle:
 - data_loader.py: The current S&P 500 stocks are obtained from Wikipedia using web scraping. Their data is then automatically ingested via Yahoo Finance.
 - feature_engineer.py: Transformation of raw time-series data into technical indicators and signals.
 - analyse_stocks.py: The buying signal generation engine and performance calculator for individual stocks
@@ -27,7 +27,8 @@ The framework is built with a modular, object-oriented programming (OOP) approac
 - plotter.py: Visualization engine for side-by-side comparison of strategy vs. control equity curves.
 
 ### Result highlight
-Investigated the "Momentum" strategy for a buy signal that triggers if an S&P500 stock has increased by at least 40% for two successive 40 day periods. The stocks are sold a year after the buy signal triggers. For each stock, up to five control stocks were bought with a random offset of +/- 100 days. Result: 62.1% yearly increase for the 24 "Momentum" strategy stocks, and 23.6% yearly increase for the 99 control stocks. The control stocks increased more than the typical S&P500 value of ~11% because they were bought at relatively favorable times. The "Momentum" stocks outperformed the control stocks by rather large margin. A Kolgomorov-Smirnov test yielded a 98.0% chance that the "Momentum" and coltrol groups were drawn from different probability distributions. Therefore, the good performance of the "Momentum" stocks is statistically significant.
+Investigated the "Momentum" strategy for a buy signal that triggers if an S&P500 stock has increased by at least 40% for two successive 40 day periods. The stocks are sold a year after the buy signal triggers. For each stock, up to five control stocks were bought with a random offset of +/- 100 days. 
+Result: 62.1% yearly increase for the 24 "Momentum" strategy stocks, and 23.6% yearly increase for the 99 control stocks. The control stocks increased more than the typical S&P500 value of ~11% because they were bought at relatively favorable times. The "Momentum" stocks outperformed the control stocks by rather large margin. A Kolgomorov-Smirnov test yielded a 98.0% chance that the "Momentum" and control groups were drawn from different probability distributions. Therefore, the good performance of the "Momentum" stocks is statistically significant.
 
 <img width="550" height="250" alt="mom_40d_f1p4_dcon100d" src="https://github.com/user-attachments/assets/5adb90cd-0812-4e88-ad70-e09e70bdda4a" />
 
