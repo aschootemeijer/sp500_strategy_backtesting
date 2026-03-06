@@ -10,16 +10,16 @@ import src.plotter as plotter
 np.random.seed( 1 )       # for reproducible results when we draw random control stocks
 
 # Define variables that will be used in the object created by the Backtester class
-years_back                = 5  # we analyse the data of the last how many years?
-track_time                = 45 # in days: for how long do we follow the stock after we 'bought' them?
-strategy                  = 'early_recovery'      # momentum, declining, early_recovery, or all (random) 
-sector                    = 'Information Technology'  # 'all' is also allowed.
-n_control                 = 1   # number of stocks we 'buy' at the same time as when the 'buy' signal triggers
+years_back                = 10  # we analyse the data of the last how many years?
+track_time                = 365 # in days: for how long do we follow the stock after we 'bought' them?
+strategy                  = 'momentum'      # momentum, declining, early_recovery, or all (random) 
+sector                    = 'all' #'Information Technology'  # 'all' is also allowed.
+n_control                 = 5   # number of stocks we 'buy' at the same time as when the 'buy' signal triggers
 control_offset_in_d       = 100     # we offset the control buying moment to reduce bias
 
 # For MOMENTUM strategy:
-momentum_factor           = 1.7
-momentum_interval_in_days = 200
+momentum_factor           = 1.4
+momentum_interval_in_days = 40 
 # For DECLINING and EARLY_RECOVERY strategy:
 frac_remaining            = 0.4
 # For EARLY_RECOVERY strategy:
@@ -122,16 +122,30 @@ class BackTester:
 
         #         EVALUATE the results of strategy and control data
         strategy_avg_yrly_incr_in_perc, strategy_avg_incr_in_perc = eval_results.calc_avg_yrly_incr( strategy_periods, strategy_value_rats )
-        control_avg_yrly_incr_in_perc,  control_avg_incr_in_perc  = eval_results.calc_avg_yrly_incr( control_periods,  control_value_rats     )
-        print( f'\nAverage yearly increase of STRATEGY: {self.strategy} = {strategy_avg_yrly_incr_in_perc}%' )
-        print(   f'Average yearly increase of CONTROL stocks = {control_avg_yrly_incr_in_perc}%\n' )
+        control_avg_yrly_incr_in_perc,  control_avg_incr_in_perc  = eval_results.calc_avg_yrly_incr( control_periods,  control_value_rats  )
+        print( f'\nAverage yearly increase of STRATEGY (N={len(strategy_periods)}): {self.strategy} = {strategy_avg_yrly_incr_in_perc}%' )
+        print(   f'Average yearly increase of CONTROL (N={len(control_periods)}) stocks = {control_avg_yrly_incr_in_perc}%\n' )
         print(   f'Average total increase: {strategy_avg_incr_in_perc}% (STRATEGY) and {control_avg_incr_in_perc} (CONTROL)\n' )
         print( f'These were the variables that we used:\n{vars(self)}\n' )
+        print( strategy_value_rats )
+        print( control_value_rats )
+        print( 'KS test:', eval_results.calc_p_value( strategy_value_rats, control_value_rats ) )
         plotter.prettify_and_show( ax1,ax2,self.strategy,strategy_avg_yrly_incr_in_perc,control_avg_yrly_incr_in_perc )
                 
+
+# WAAROM KLEIN VERSCHIL TUSSEN STRAT 1YR AVG_YRLY en TOTAL_INCR?
             
 if __name__ == '__main__':
     momtest = BackTester( strategy, sector, years_back, track_time, momentum_factor, momentum_interval_in_days, 
                           frac_remaining, frac_bump, n_control, control_offset_in_d )
     momtest.run_test()
-    
+
+"""
+if __name__ == '__main__':
+    for momentum_factor in [1.4, 1.5]:
+        for momentum_interval_in_days in [50, 100]:
+            momtest = BackTester( strategy, sector, years_back, track_time, momentum_factor, momentum_interval_in_days,
+                          frac_remaining, frac_bump, n_control, control_offset_in_d )
+            momtest.run_test() 
+# https://github.com/bkestelman/sp500_historical_components?tab=readme-ov-file # for removed tickers
+"""
