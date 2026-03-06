@@ -1,5 +1,5 @@
 ## S&P500 Strategy Backtesting
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![Yahoo!](https://img.shields.io/badge/Yahoo!-6001D2?style=for-the-badge&logo=Yahoo!&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![Yahoo!](https://img.shields.io/badge/Yahoo!-6001D2?style=for-the-badge&logo=Yahoo!&logoColor=white) ![SciPy](https://img.shields.io/badge/SciPy-%230C55A5.svg?style=for-the-badge&logo=scipy&logoColor=%white)
 
 ### Getting started
 - Clone the repository.
@@ -27,8 +27,8 @@ The framework is built with a modular, object-oriented programming (OOP) approac
 - plotter.py: Visualization engine for side-by-side comparison of strategy vs. control equity curves.
 
 ### Result highlight
-Investigated the "Momentum" strategy for a buy signal that triggers if an S&P500 stock has increased by at least 50% for two successive 50 day periods. The stocks are sold a year after the buy signal triggers. For each stock, up to five control stocks were bought with a random offset of +/- 100 days. Result: 48.7% yearly increase for the 33 "Momentum" strategy stocks, and 26.5% yearly increase for the 139 control stocks. The control stocks increased more than the typical S&P500 value of ~11% because they were bought at relatively favorable times. The "Momentum" stocks outperformed the control stocks by rather large margin.
-<img width="550" height="250" alt="mom_50d_f1p4_dcon100d" src="https://github.com/user-attachments/assets/9385f7c9-eeab-4aa6-aa64-2f8c86851eba" />
+Investigated the "Momentum" strategy for a buy signal that triggers if an S&P500 stock has increased by at least 40% for two successive 40 day periods. The stocks are sold a year after the buy signal triggers. For each stock, up to five control stocks were bought with a random offset of +/- 100 days. Result: 62.1% yearly increase for the 33 "Momentum" strategy stocks, and 23.6% yearly increase for the 139 control stocks. The control stocks increased more than the typical S&P500 value of ~11% because they were bought at relatively favorable times. The "Momentum" stocks outperformed the control stocks by rather large margin. A Kolgomorov-Smirnov test yielded a 98.0% chance that the "Momentum" and coltrol groups were drawn from different probability distributions. Therefore, the good performance of the "Momentum" stocks is statistically significant. 
+<img width="550" height="250" alt="mom_40d_f1p4_dcon100d" src="https://github.com/user-attachments/assets/5adb90cd-0812-4e88-ad70-e09e70bdda4a" />
 
 
 ### Future work
