@@ -31,6 +31,7 @@ Investigated the "Momentum" strategy for a buy signal that triggers if an S&P500
 Result: 62.1% yearly increase for the 24 "Momentum" strategy stocks, and 23.6% yearly increase for the 99 control stocks. The control stocks increased more than the typical S&P500 value of ~11% because they were bought at relatively favorable times. The "Momentum" stocks outperformed the control stocks by rather large margin. A Kolgomorov-Smirnov test yielded a 98.0% chance that the "Momentum" and control groups were drawn from different probability distributions. Therefore, the good performance of the "Momentum" stocks is statistically significant.
 
 <img width="550" height="250" alt="mom_40d_f1p4_dcon100d" src="https://github.com/user-attachments/assets/5adb90cd-0812-4e88-ad70-e09e70bdda4a" />
+<img width="550" height="250" alt="mom_40d_f1p4_dcon100d" src="https://github.com/user-attachments/assets/7b83fd3c-9ade-45ef-840c-eeaf73c5b394" />
 
 
 ### Future work
