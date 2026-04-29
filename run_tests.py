@@ -67,6 +67,8 @@ class BackTester:
         if pd.isna( r ): 
            return None, None, None, None, None, None
         dr, strategy_value_ratio, strategy_period, strategy_yrly_incr_in_perc, date0 = analyse_stocks.strategy_value_ratio_and_period_and_yearly_increase( d, r, self.track_time )
+        if len(dr) < 20: # we do not want to analyse stocks where the buy signal triggered less than a month ago - too little data
+           return None, None, None, None, None, None
         return d, dr, strategy_value_ratio, strategy_period, strategy_yrly_incr_in_perc, date0 
 
 
@@ -94,7 +96,8 @@ class BackTester:
         """ 
 
         #         PREPARE for looping over the stocks in the stock_tickers list
-        strategy_periods, strategy_value_rats, control_periods, control_value_rats = [],[],[],[]
+        #strategy_periods, strategy_value_rats, control_periods, control_value_rats = [],[],[],[]
+        strategy_dates, strategy_cashflows, strategy_value_rats, control_dates, control_cashflows, control_value_rats = [],[],[],[],[],[]
         stock_tickers = data_loader.load_sp500( self.sector, self.years_back )
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 5))
 
@@ -103,12 +106,16 @@ class BackTester:
             print( f'\n{stock_ticker}' )
             d, dr, strategy_value_ratio, strategy_period, strategy_yrly_incr_in_perc, date0 = self.strategy_test_stock( stock_ticker )
 
+
             #     Evaluate STRATEGY stocks
             if strategy_value_ratio is not None:
+                #if date0.year == 2020: continue
                 print( strategy_value_ratio, strategy_period*365, date0.date(), strategy_yrly_incr_in_perc )
                 plotter.plot_price_vs_time( d, dr, ax1, stock_ticker )
-                strategy_periods.append( strategy_period )
+                #strategy_periods.append( strategy_period )
                 strategy_value_rats.append( strategy_value_ratio )
+                strategy_dates.extend( [dr.Date.iloc[0], dr.Date.iloc[-1]] )
+                strategy_cashflows.extend( [ -1,strategy_value_ratio ] )
 
                 # Get value ratio and data for a CONTROL stock for reference.
                 for i in range( n_control ):
@@ -117,18 +124,24 @@ class BackTester:
                     if control_value_ratio is not None:
                         print( f'{control_stock_ticker} (control)', control_value_ratio, control_period*365, control_yrly_incr_in_perc )
                         plotter.plot_price_vs_time( c, cr, ax2, stock_ticker )
-                        control_periods.append( control_period )
+                        #control_periods.append( control_period )
                         control_value_rats.append( control_value_ratio )
+                        control_dates.extend( [cr.Date.iloc[0], cr.Date.iloc[-1]] )
+                        control_cashflows.extend( [ -1,control_value_ratio ] )
 
         #         EVALUATE the results of strategy and control data
-        strategy_avg_yrly_incr_in_perc, strategy_avg_incr_in_perc = eval_results.calc_avg_yrly_incr( strategy_periods, strategy_value_rats )
-        control_avg_yrly_incr_in_perc,  control_avg_incr_in_perc  = eval_results.calc_avg_yrly_incr( control_periods,  control_value_rats  )
-        print( f'\nAverage yearly increase of STRATEGY (N={len(strategy_periods)}): {self.strategy} = {strategy_avg_yrly_incr_in_perc}%' )
-        print(   f'Average yearly increase of CONTROL (N={len(control_periods)}) stocks = {control_avg_yrly_incr_in_perc}%\n' )
-        print(   f'Average total increase: {strategy_avg_incr_in_perc}% (STRATEGY) and {control_avg_incr_in_perc} (CONTROL)\n' )
-        print( f'These were the variables that we used:\n{vars(self)}\n' )
-        print( strategy_value_rats )
-        print( control_value_rats )
+        #strategy_avg_yrly_incr_in_perc, strategy_avg_incr_in_perc = eval_results.calc_avg_yrly_incr( strategy_periods, strategy_value_rats )
+        #control_avg_yrly_incr_in_perc,  control_avg_incr_in_perc  = eval_results.calc_avg_yrly_incr( control_periods,  control_value_rats  )
+        print( strategy_dates )
+        print( strategy_cashflows )
+        strategy_avg_yrly_incr_in_perc = eval_results.calc_xirr( strategy_dates, strategy_cashflows )
+        control_avg_yrly_incr_in_perc  = eval_results.calc_xirr( control_dates,  control_cashflows  )
+        print( f'\nAverage yearly increase of STRATEGY (N={len(strategy_dates)/2}): {self.strategy} = {strategy_avg_yrly_incr_in_perc}%' )
+        print(   f'Average yearly increase of CONTROL (N={len(control_dates)/2}) stocks = {control_avg_yrly_incr_in_perc}%\n' )
+        #print(   f'Average total increase: {strategy_avg_incr_in_perc}% (STRATEGY) and {control_avg_incr_in_perc} (CONTROL)\n' )
+        #print( f'These were the variables that we used:\n{vars(self)}\n' )
+        #print( strategy_value_rats )
+        #print( control_value_rats )
         print( 'KS test:', eval_results.calc_p_value( strategy_value_rats, control_value_rats ) )
         plotter.prettify_and_show( ax1,ax2,self.strategy,strategy_avg_yrly_incr_in_perc,control_avg_yrly_incr_in_perc )
                 
