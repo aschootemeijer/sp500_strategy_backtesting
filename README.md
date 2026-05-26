@@ -34,19 +34,79 @@ Result: 54.9% yearly increase for the 24 "Momentum" strategy stocks, and 27.3% y
 
 ### Result highlight (2)
 <!-- DATA_START -->
-# last automatic update: 2026-05-25 16:11
-# momentum_factor: 1.25; momentum_interval: 40 days
-# buy signal triggered for:
-stock_ticker trigger_date
-        AKAM   2026-05-08
-         APA   2026-03-19
-        AMAT   2025-12-10
-       GOOGL   2025-11-24
-        GOOG   2025-11-24
-         AMD   2025-10-08
-         ALB   2025-09-26
-         APP   2025-09-18
-        ANET   2025-09-18
+Last automatic update: 2026-05-26 14:36
+Momentum_factor: 1.25; momentum_interval: 40 days
+Buy signal triggered for:
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>stock_ticker</th>
+      <th>trigger_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CSCO</td>
+      <td>2026-05-14</td>
+    </tr>
+    <tr>
+      <td>HPE</td>
+      <td>2026-05-14</td>
+    </tr>
+    <tr>
+      <td>FTNT</td>
+      <td>2026-05-14</td>
+    </tr>
+    <tr>
+      <td>AKAM</td>
+      <td>2026-05-08</td>
+    </tr>
+    <tr>
+      <td>DDOG</td>
+      <td>2026-05-08</td>
+    </tr>
+    <tr>
+      <td>DVA</td>
+      <td>2026-05-06</td>
+    </tr>
+    <tr>
+      <td>JBL</td>
+      <td>2026-05-06</td>
+    </tr>
+    <tr>
+      <td>Q</td>
+      <td>2026-05-04</td>
+    </tr>
+    <tr>
+      <td>GNRC</td>
+      <td>2026-05-04</td>
+    </tr>
+    <tr>
+      <td>PWR</td>
+      <td>2026-04-30</td>
+    </tr>
+    <tr>
+      <td>TXN</td>
+      <td>2026-04-23</td>
+    </tr>
+    <tr>
+      <td>ON</td>
+      <td>2026-04-22</td>
+    </tr>
+    <tr>
+      <td>MPWR</td>
+      <td>2026-04-17</td>
+    </tr>
+    <tr>
+      <td>DELL</td>
+      <td>2026-04-16</td>
+    </tr>
+    <tr>
+      <td>OXY</td>
+      <td>2026-03-30</td>
+    </tr>
+  </tbody>
+</table>
 <!-- DATA_END -->
 
 ### Future work
