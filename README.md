@@ -11,7 +11,7 @@ The following strategies can be tested:
 
 ### Result highlight (1)
 <b>Method:</b> Investigated the "Momentum" strategy for a buy signal that triggers if an S&P500 stock has increased by at least 40% for two successive 40 day periods. The stocks are sold a year after the buy signal triggers. For each stock, up to five control stocks were bought with a random offset of +/- 100 days.<br>
-<b>Result:</b> 54.9% yearly increase for the 24 "Momentum" strategy stocks, and 27.3% yearly increase for the 99 control stocks. The control stocks increased more than the typical S&P500 value of ~11% because they were bought at relatively favorable times. The "Momentum" stocks outperformed the control stocks by rather large margin. A Kolgomorov-Smirnov test yielded a p=99.7% chance that the "Momentum" and control groups were drawn from different probability distributions. Therefore, the good performance of the "Momentum" stocks is statistically significant.
+<b>Result:</b> 54.9% yearly increase for the 24 "Momentum" strategy stocks, and 27.3% yearly increase for the 99 control stocks. The control stocks increased more than the typical S&P500 value of ~11% because they were bought at relatively favorable times. A Kolgomorov-Smirnov test yielded a p=99.7% chance that the "Momentum" and control groups were drawn from different probability distributions. Therefore, the good performance of the "Momentum" stocks is statistically significant.
 
 <img width="550" height="250" alt="mom_40d_f1p4_dcon100d" src="https://github.com/user-attachments/assets/23071ef3-2d5a-4a4c-9c2d-e1048c9d5339" />
 
@@ -100,7 +100,7 @@ The framework is built with a modular, OOP approach following the Separation of 
 - src/eval_results.py: Evaluates the performance of an ensemble of stocks (strategy or control).
 - src/plotter.py: Visualization engine for side-by-side comparison of strategy vs. control equity curves.
 - run_tests.py: Puts the modules above to use by testing a strategy. Example: Result highlight (1).
-- buy_signal_generator.py: Creates a table of stocks for which a buy signal triggered recently. This is shown under Result highlight (2).<br>This table is updated daily.This is fully automated with Cron.
+- buy_signal_generator.py: Creates a table of stocks for which a buy signal triggered recently. This is shown under Result highlight (2).<br>The table is updated daily. This is fully automated with Cron.
 
 ### Bias mitigation
 <!-- - Survivorship Bias Mitigation: Stock tickers are filtered based on their historical index inclusion dates. The engine only tests stocks that were part of the S&P 500 at the start of the lookback period, preventing the "selection of winners" fallacy. -->
