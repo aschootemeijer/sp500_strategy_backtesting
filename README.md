@@ -10,8 +10,8 @@ The following strategies can be tested:
 - "Early_recovery": similar to "Decreasing", but the buy signal triggers only after the stock goes up again after a dip
 
 ### Result highlight (1)
-<b>Method:<\b> Investigated the "Momentum" strategy for a buy signal that triggers if an S&P500 stock has increased by at least 40% for two successive 40 day periods. The stocks are sold a year after the buy signal triggers. For each stock, up to five control stocks were bought with a random offset of +/- 100 days.<br>
-<b>Result:<\b> 54.9% yearly increase for the 24 "Momentum" strategy stocks, and 27.3% yearly increase for the 99 control stocks. The control stocks increased more than the typical S&P500 value of ~11% because they were bought at relatively favorable times. The "Momentum" stocks outperformed the control stocks by rather large margin. A Kolgomorov-Smirnov test yielded a p=99.7% chance that the "Momentum" and control groups were drawn from different probability distributions. Therefore, the good performance of the "Momentum" stocks is statistically significant.
+<b>Method:</b> Investigated the "Momentum" strategy for a buy signal that triggers if an S&P500 stock has increased by at least 40% for two successive 40 day periods. The stocks are sold a year after the buy signal triggers. For each stock, up to five control stocks were bought with a random offset of +/- 100 days.<br>
+<b>Result:</b> 54.9% yearly increase for the 24 "Momentum" strategy stocks, and 27.3% yearly increase for the 99 control stocks. The control stocks increased more than the typical S&P500 value of ~11% because they were bought at relatively favorable times. The "Momentum" stocks outperformed the control stocks by rather large margin. A Kolgomorov-Smirnov test yielded a p=99.7% chance that the "Momentum" and control groups were drawn from different probability distributions. Therefore, the good performance of the "Momentum" stocks is statistically significant.
 
 <img width="550" height="250" alt="mom_40d_f1p4_dcon100d" src="https://github.com/user-attachments/assets/23071ef3-2d5a-4a4c-9c2d-e1048c9d5339" />
 
@@ -94,7 +94,7 @@ Most recently triggered buy signals:
 <!-- DATA_END -->
 
 ### Bias mitigation
-<-- - Survivorship Bias Mitigation: Stock tickers are filtered based on their historical index inclusion dates. The engine only tests stocks that were part of the S&P 500 at the start of the lookback period, preventing the "selection of winners" fallacy. --!>
+<!-- - Survivorship Bias Mitigation: Stock tickers are filtered based on their historical index inclusion dates. The engine only tests stocks that were part of the S&P 500 at the start of the lookback period, preventing the "selection of winners" fallacy. -->
 - Survivorship Bias Mitigation: Stock tickers are selected that were part of the S&P 500 at the start of the lookback period (using a local file with historical S&P 500 constituents). This prevents the infamous "selection of winners" fallacy. 
 - Statistical Control Groups: Every strategy run is benchmarked against a randomly sampled control group (Monte Carlo style) to distinguish Alpha (outperformance) from Beta (market returns). It is possible to add a random offset in the buying date of the control stock, to make the moment of buying more random.
 
