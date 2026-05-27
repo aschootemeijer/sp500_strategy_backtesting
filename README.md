@@ -34,9 +34,9 @@ Result: 54.9% yearly increase for the 24 "Momentum" strategy stocks, and 27.3% y
 
 ### Result highlight (2)
 <!-- DATA_START -->
-Last automatic update: 2026-05-26 14:36
-Momentum_factor: 1.25; momentum_interval: 40 days
-Buy signal triggered for:
+Last automatic update: 2026-05-27 09:13<br>
+Momentum_factor: 1.4; momentum_interval: 40 days<br>
+Most recently triggered buy signals:
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -46,64 +46,64 @@ Buy signal triggered for:
   </thead>
   <tbody>
     <tr>
-      <td>CSCO</td>
-      <td>2026-05-14</td>
-    </tr>
-    <tr>
-      <td>HPE</td>
-      <td>2026-05-14</td>
-    </tr>
-    <tr>
-      <td>FTNT</td>
-      <td>2026-05-14</td>
-    </tr>
-    <tr>
-      <td>AKAM</td>
-      <td>2026-05-08</td>
-    </tr>
-    <tr>
-      <td>DDOG</td>
-      <td>2026-05-08</td>
-    </tr>
-    <tr>
-      <td>DVA</td>
-      <td>2026-05-06</td>
-    </tr>
-    <tr>
-      <td>JBL</td>
-      <td>2026-05-06</td>
-    </tr>
-    <tr>
-      <td>Q</td>
-      <td>2026-05-04</td>
-    </tr>
-    <tr>
-      <td>GNRC</td>
-      <td>2026-05-04</td>
-    </tr>
-    <tr>
-      <td>PWR</td>
-      <td>2026-04-30</td>
-    </tr>
-    <tr>
-      <td>TXN</td>
-      <td>2026-04-23</td>
-    </tr>
-    <tr>
       <td>ON</td>
-      <td>2026-04-22</td>
+      <td>2026-05-14</td>
     </tr>
     <tr>
-      <td>MPWR</td>
-      <td>2026-04-17</td>
+      <td>GLW</td>
+      <td>2026-05-08</td>
     </tr>
     <tr>
       <td>DELL</td>
-      <td>2026-04-16</td>
+      <td>2026-05-06</td>
     </tr>
     <tr>
-      <td>OXY</td>
-      <td>2026-03-30</td>
+      <td>INTC</td>
+      <td>2026-04-24</td>
+    </tr>
+    <tr>
+      <td>MRNA</td>
+      <td>2026-01-21</td>
+    </tr>
+    <tr>
+      <td>ALB</td>
+      <td>2026-01-02</td>
+    </tr>
+    <tr>
+      <td>TER</td>
+      <td>2025-11-05</td>
+    </tr>
+    <tr>
+      <td>MU</td>
+      <td>2025-11-05</td>
+    </tr>
+    <tr>
+      <td>STX</td>
+      <td>2025-09-15</td>
+    </tr>
+    <tr>
+      <td>WBD</td>
+      <td>2025-09-12</td>
+    </tr>
+    <tr>
+      <td>ANET</td>
+      <td>2025-08-12</td>
+    </tr>
+    <tr>
+      <td>AMD</td>
+      <td>2025-07-31</td>
+    </tr>
+    <tr>
+      <td>ORCL</td>
+      <td>2025-07-31</td>
+    </tr>
+    <tr>
+      <td>WDC</td>
+      <td>2025-07-31</td>
+    </tr>
+    <tr>
+      <td>TPR</td>
+      <td>2025-02-19</td>
     </tr>
   </tbody>
 </table>
