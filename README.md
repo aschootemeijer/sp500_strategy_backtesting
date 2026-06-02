@@ -18,7 +18,7 @@ The following strategies can be tested:
 ### Result highlight (2)
 For the strategy tested in Result highlight (1), we obtain the stocks with the most recently triggered buy signals. 
 <!-- DATA_START -->
-Last automatic update: 2026-05-29 10:02<br>
+Last automatic update: 2026-06-02 10:02<br>
 Momentum_factor: 1.4; momentum_interval: 40 days<br>
 <table border="1" class="dataframe">
   <thead>
@@ -29,6 +29,14 @@ Momentum_factor: 1.4; momentum_interval: 40 days<br>
   </thead>
   <tbody>
     <tr>
+      <td>DDOG</td>
+      <td>2026-05-29</td>
+    </tr>
+    <tr>
+      <td>HPE</td>
+      <td>2026-05-29</td>
+    </tr>
+    <tr>
       <td>ON</td>
       <td>2026-05-14</td>
     </tr>
@@ -37,8 +45,16 @@ Momentum_factor: 1.4; momentum_interval: 40 days<br>
       <td>2026-05-08</td>
     </tr>
     <tr>
+      <td>AMD</td>
+      <td>2026-05-06</td>
+    </tr>
+    <tr>
       <td>DELL</td>
       <td>2026-05-06</td>
+    </tr>
+    <tr>
+      <td>FIX</td>
+      <td>2026-05-05</td>
     </tr>
     <tr>
       <td>INTC</td>
@@ -61,32 +77,16 @@ Momentum_factor: 1.4; momentum_interval: 40 days<br>
       <td>2025-11-05</td>
     </tr>
     <tr>
+      <td>HOOD</td>
+      <td>2025-10-09</td>
+    </tr>
+    <tr>
       <td>STX</td>
-      <td>2025-09-15</td>
+      <td>2025-10-01</td>
     </tr>
     <tr>
-      <td>WBD</td>
-      <td>2025-09-12</td>
-    </tr>
-    <tr>
-      <td>ANET</td>
-      <td>2025-08-12</td>
-    </tr>
-    <tr>
-      <td>AMD</td>
-      <td>2025-07-31</td>
-    </tr>
-    <tr>
-      <td>ORCL</td>
-      <td>2025-07-31</td>
-    </tr>
-    <tr>
-      <td>WDC</td>
-      <td>2025-07-31</td>
-    </tr>
-    <tr>
-      <td>TPR</td>
-      <td>2025-02-19</td>
+      <td>SNDK</td>
+      <td>2025-09-25</td>
     </tr>
   </tbody>
 </table>
