@@ -18,7 +18,7 @@ The following strategies can be tested:
 ### Result highlight (2)
 For the strategy tested in Result highlight (1), we obtain the stocks with the most recently triggered buy signals. 
 <!-- DATA_START -->
-Last automatic update: 2026-06-09 10:02<br>
+Last automatic update: 2026-06-09 22:01<br>
 Momentum_factor: 1.4; momentum_interval: 40 days<br>
 <table border="1" class="dataframe">
   <thead>
@@ -28,6 +28,10 @@ Momentum_factor: 1.4; momentum_interval: 40 days<br>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>HUM</td>
+      <td>2026-06-08</td>
+    </tr>
     <tr>
       <td>CRWD</td>
       <td>2026-06-02</td>
@@ -73,20 +77,16 @@ Momentum_factor: 1.4; momentum_interval: 40 days<br>
       <td>2026-01-02</td>
     </tr>
     <tr>
-      <td>TER</td>
-      <td>2025-11-05</td>
+      <td>WBD</td>
+      <td>2025-12-05</td>
     </tr>
     <tr>
       <td>MU</td>
       <td>2025-11-05</td>
     </tr>
     <tr>
-      <td>HOOD</td>
-      <td>2025-10-09</td>
-    </tr>
-    <tr>
-      <td>SNDK</td>
-      <td>2025-10-02</td>
+      <td>TER</td>
+      <td>2025-11-05</td>
     </tr>
   </tbody>
 </table>
