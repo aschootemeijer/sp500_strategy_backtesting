@@ -18,7 +18,7 @@ The following strategies can be tested:
 ### Result highlight (2)
 For the strategy tested in Result highlight (1), we obtain the stocks with the most recently triggered buy signals. 
 <!-- DATA_START -->
-Last automatic update: 2026-07-10 10:24<br>
+Last automatic update: 2026-07-14 10:42<br>
 Momentum_factor: 1.4; momentum_interval: 40 days<br>
 <table border="1" class="dataframe">
   <thead>
@@ -29,15 +29,19 @@ Momentum_factor: 1.4; momentum_interval: 40 days<br>
   </thead>
   <tbody>
     <tr>
+      <td>FTNT</td>
+      <td>2026-07-09</td>
+    </tr>
+    <tr>
+      <td>AMAT</td>
+      <td>2026-06-30</td>
+    </tr>
+    <tr>
       <td>KLAC</td>
       <td>2026-06-30</td>
     </tr>
     <tr>
       <td>LRCX</td>
-      <td>2026-06-30</td>
-    </tr>
-    <tr>
-      <td>AMAT</td>
       <td>2026-06-30</td>
     </tr>
     <tr>
@@ -102,10 +106,6 @@ Momentum_factor: 1.4; momentum_interval: 40 days<br>
     </tr>
     <tr>
       <td>MU</td>
-      <td>2025-11-05</td>
-    </tr>
-    <tr>
-      <td>TER</td>
       <td>2025-11-05</td>
     </tr>
   </tbody>
