@@ -18,95 +18,155 @@ The following strategies can be tested:
 ### Result highlight (2)
 For the strategy tested in Result highlight (1), we obtain the stocks with the most recently triggered buy signals. 
 <!-- DATA_START -->
-Last automatic update: 2026-07-21 10:01<br>
+Last automatic update: 2026-07-21 17:57<br>
 Momentum_factor: 1.4; momentum_interval: 40 days<br>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th>stock_ticker</th>
       <th>trigger_date</th>
+      <th>stock_ticker</th>
+      <th>stock_name</th>
+      <th>perc_since_buy</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>FTNT</td>
       <td>2026-07-09</td>
+      <td>FTNT</td>
+      <td>Fortinet, Inc.</td>
+      <td>-3.5% 🔴</td>
     </tr>
     <tr>
+      <td>2026-06-30</td>
       <td>AMAT</td>
-      <td>2026-06-30</td>
+      <td>Applied Materials, Inc.</td>
+      <td>-22.0% 🔴</td>
     </tr>
     <tr>
+      <td>2026-06-30</td>
       <td>KLAC</td>
-      <td>2026-06-30</td>
+      <td>KLA Corporation</td>
+      <td>-28.2% 🔴</td>
     </tr>
     <tr>
+      <td>2026-06-30</td>
       <td>LRCX</td>
-      <td>2026-06-30</td>
+      <td>Lam Research Corporation</td>
+      <td>-26.1% 🔴</td>
     </tr>
     <tr>
-      <td>PANW</td>
       <td>2026-06-18</td>
+      <td>PANW</td>
+      <td>Palo Alto Networks, Inc.</td>
+      <td>18.3% 🟢</td>
     </tr>
     <tr>
-      <td>HUM</td>
       <td>2026-06-08</td>
+      <td>HUM</td>
+      <td>Humana Inc.</td>
+      <td>14.3% 🟢</td>
     </tr>
     <tr>
-      <td>CRWD</td>
       <td>2026-06-02</td>
+      <td>CRWD</td>
+      <td>CrowdStrike Holdings, Inc.</td>
+      <td>0.2% 🟢</td>
     </tr>
     <tr>
+      <td>2026-05-29</td>
       <td>DDOG</td>
-      <td>2026-05-29</td>
+      <td>Datadog, Inc.</td>
+      <td>3.0% 🟢</td>
     </tr>
     <tr>
+      <td>2026-05-29</td>
       <td>HPE</td>
-      <td>2026-05-29</td>
+      <td>Hewlett Packard Enterprise Comp</td>
+      <td>9.0% 🟢</td>
     </tr>
     <tr>
-      <td>ON</td>
       <td>2026-05-14</td>
+      <td>ON</td>
+      <td>ON Semiconductor Corporation</td>
+      <td>-24.1% 🔴</td>
     </tr>
     <tr>
-      <td>GLW</td>
       <td>2026-05-08</td>
+      <td>GLW</td>
+      <td>Corning Incorporated</td>
+      <td>-13.4% 🔴</td>
     </tr>
     <tr>
+      <td>2026-05-06</td>
       <td>AMD</td>
-      <td>2026-05-06</td>
+      <td>Advanced Micro Devices, Inc.</td>
+      <td>26.4% 🟢</td>
     </tr>
     <tr>
+      <td>2026-05-06</td>
       <td>DELL</td>
-      <td>2026-05-06</td>
+      <td>Dell Technologies Inc.</td>
+      <td>68.6% 🟢</td>
     </tr>
     <tr>
-      <td>FIX</td>
       <td>2026-05-05</td>
+      <td>FIX</td>
+      <td>Comfort Systems USA, Inc.</td>
+      <td>-9.8% 🔴</td>
     </tr>
     <tr>
-      <td>INTC</td>
       <td>2026-04-24</td>
+      <td>INTC</td>
+      <td>Intel Corporation</td>
+      <td>25.9% 🟢</td>
     </tr>
     <tr>
-      <td>TER</td>
       <td>2026-02-06</td>
+      <td>TER</td>
+      <td>Teradyne, Inc.</td>
+      <td>24.3% 🟢</td>
     </tr>
     <tr>
-      <td>STX</td>
       <td>2026-02-03</td>
+      <td>STX</td>
+      <td>Seagate Technology Holdings PLC</td>
+      <td>100.6% 🟢</td>
     </tr>
     <tr>
-      <td>MRNA</td>
       <td>2026-01-21</td>
+      <td>MRNA</td>
+      <td>Moderna, Inc.</td>
+      <td>18.6% 🟢</td>
     </tr>
     <tr>
-      <td>ALB</td>
       <td>2026-01-02</td>
+      <td>ALB</td>
+      <td>Albemarle Corporation</td>
+      <td>-5.3% 🔴</td>
     </tr>
     <tr>
-      <td>WBD</td>
       <td>2025-12-05</td>
+      <td>WBD</td>
+      <td>Warner Bros. Discovery, Inc. -</td>
+      <td>0.6% 🟢</td>
+    </tr>
+    <tr>
+      <td>2025-11-11</td>
+      <td>MU</td>
+      <td>Micron Technology, Inc.</td>
+      <td>233.6% 🟢</td>
+    </tr>
+    <tr>
+      <td>2025-11-11</td>
+      <td>SNDK</td>
+      <td>Sandisk Corporation</td>
+      <td>432.9% 🟢</td>
+    </tr>
+    <tr>
+      <td>2025-11-11</td>
+      <td>WDC</td>
+      <td>Western Digital Corporation</td>
+      <td>191.0% 🟢</td>
     </tr>
   </tbody>
 </table>
