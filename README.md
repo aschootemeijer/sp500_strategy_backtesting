@@ -18,15 +18,15 @@ The following strategies can be tested:
 ### Result highlight (2)
 For the strategy tested in Result highlight (1), we obtain the stocks with the most recently triggered buy signals. 
 <!-- DATA_START -->
-Last automatic update: 2026-07-21 17:57<br>
-Momentum_factor: 1.4; momentum_interval: 40 days<br>
-<table border="1" class="dataframe">
+Last automatic update: 2026-07-22 10:01<br>
+Buy signal trigger: 40% increase in two successive 40 day periods<br>
+Average increase since trigger: 142.9%<br><table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>trigger_date</th>
       <th>stock_ticker</th>
       <th>stock_name</th>
-      <th>perc_since_buy</th>
+      <th>perc_since_trigger</th>
     </tr>
   </thead>
   <tbody>
@@ -34,139 +34,139 @@ Momentum_factor: 1.4; momentum_interval: 40 days<br>
       <td>2026-07-09</td>
       <td>FTNT</td>
       <td>Fortinet, Inc.</td>
-      <td>-3.5% 🔴</td>
+      <td>🔴 -3.4%</td>
     </tr>
     <tr>
       <td>2026-06-30</td>
       <td>AMAT</td>
       <td>Applied Materials, Inc.</td>
-      <td>-22.0% 🔴</td>
+      <td>🔴 -21.9%</td>
     </tr>
     <tr>
       <td>2026-06-30</td>
       <td>KLAC</td>
       <td>KLA Corporation</td>
-      <td>-28.2% 🔴</td>
+      <td>🔴 -27.9%</td>
     </tr>
     <tr>
       <td>2026-06-30</td>
       <td>LRCX</td>
       <td>Lam Research Corporation</td>
-      <td>-26.1% 🔴</td>
+      <td>🔴 -25.7%</td>
     </tr>
     <tr>
       <td>2026-06-18</td>
       <td>PANW</td>
       <td>Palo Alto Networks, Inc.</td>
-      <td>18.3% 🟢</td>
+      <td>🟢 18.9%</td>
     </tr>
     <tr>
       <td>2026-06-08</td>
       <td>HUM</td>
       <td>Humana Inc.</td>
-      <td>14.3% 🟢</td>
+      <td>🟢 13.9%</td>
     </tr>
     <tr>
       <td>2026-06-02</td>
       <td>CRWD</td>
       <td>CrowdStrike Holdings, Inc.</td>
-      <td>0.2% 🟢</td>
+      <td>🔴 -0.6%</td>
     </tr>
     <tr>
       <td>2026-05-29</td>
       <td>DDOG</td>
       <td>Datadog, Inc.</td>
-      <td>3.0% 🟢</td>
+      <td>🟢 3.0%</td>
     </tr>
     <tr>
       <td>2026-05-29</td>
       <td>HPE</td>
       <td>Hewlett Packard Enterprise Comp</td>
-      <td>9.0% 🟢</td>
+      <td>🟢 8.9%</td>
     </tr>
     <tr>
       <td>2026-05-14</td>
       <td>ON</td>
       <td>ON Semiconductor Corporation</td>
-      <td>-24.1% 🔴</td>
+      <td>🔴 -23.1%</td>
     </tr>
     <tr>
       <td>2026-05-08</td>
       <td>GLW</td>
       <td>Corning Incorporated</td>
-      <td>-13.4% 🔴</td>
+      <td>🔴 -13.0%</td>
     </tr>
     <tr>
       <td>2026-05-06</td>
       <td>AMD</td>
       <td>Advanced Micro Devices, Inc.</td>
-      <td>26.4% 🟢</td>
+      <td>🟢 29.2%</td>
     </tr>
     <tr>
       <td>2026-05-06</td>
       <td>DELL</td>
       <td>Dell Technologies Inc.</td>
-      <td>68.6% 🟢</td>
+      <td>🟢 69.5%</td>
     </tr>
     <tr>
       <td>2026-05-05</td>
       <td>FIX</td>
       <td>Comfort Systems USA, Inc.</td>
-      <td>-9.8% 🔴</td>
+      <td>🔴 -9.8%</td>
     </tr>
     <tr>
       <td>2026-04-24</td>
       <td>INTC</td>
       <td>Intel Corporation</td>
-      <td>25.9% 🟢</td>
+      <td>🟢 27.8%</td>
     </tr>
     <tr>
       <td>2026-02-06</td>
       <td>TER</td>
       <td>Teradyne, Inc.</td>
-      <td>24.3% 🟢</td>
+      <td>🟢 24.7%</td>
     </tr>
     <tr>
       <td>2026-02-03</td>
       <td>STX</td>
       <td>Seagate Technology Holdings PLC</td>
-      <td>100.6% 🟢</td>
+      <td>🟢 101.2%</td>
     </tr>
     <tr>
       <td>2026-01-21</td>
       <td>MRNA</td>
       <td>Moderna, Inc.</td>
-      <td>18.6% 🟢</td>
+      <td>🟢 19.8%</td>
     </tr>
     <tr>
       <td>2026-01-02</td>
       <td>ALB</td>
       <td>Albemarle Corporation</td>
-      <td>-5.3% 🔴</td>
+      <td>🔴 -5.3%</td>
     </tr>
     <tr>
       <td>2025-12-05</td>
       <td>WBD</td>
       <td>Warner Bros. Discovery, Inc. -</td>
-      <td>0.6% 🟢</td>
+      <td>🟢 0.6%</td>
     </tr>
     <tr>
-      <td>2025-11-11</td>
+      <td>2025-11-12</td>
       <td>MU</td>
       <td>Micron Technology, Inc.</td>
-      <td>233.6% 🟢</td>
+      <td>🟢 217.1%</td>
     </tr>
     <tr>
-      <td>2025-11-11</td>
+      <td>2025-11-12</td>
       <td>SNDK</td>
       <td>Sandisk Corporation</td>
-      <td>432.9% 🟢</td>
+      <td>🟢 388.4%</td>
     </tr>
     <tr>
-      <td>2025-11-11</td>
+      <td>2025-11-12</td>
       <td>WDC</td>
       <td>Western Digital Corporation</td>
-      <td>191.0% 🟢</td>
+      <td>🟢 194.9%</td>
     </tr>
   </tbody>
 </table>
@@ -192,10 +192,12 @@ The framework is built with a modular, OOP approach following the Separation of 
 - Some stocks have been taken out of the S&P500 over time. One can include these by using the log of changes to the Wikipedia S&P500 website. I expect especially the analysis of "Declining" and "Early_recovery" strategy stocks to benefit from this. -->
 - Thanks to the OOP design of the code, it is straightforward to extend it to systematically explore the variables used for buy signal generation (e.g., for the "Momentum" strategy, these variables are how much the stock price increases and in which time period). All that is needed for this is adding one line with a for loop after the "if __name__ is '__main__':" line (per explored variable). This allows for the optimization of these strategies.
 
+<!-- 
 ### Getting started
 - Clone the repository.
 - Install dependencies: pip install pandas numpy yfinance matplotlib
 - Run the backtest with: python3 run_tests.py
+-->
 
 <!-- One can simply change:
 if __name__ == '__main__':
