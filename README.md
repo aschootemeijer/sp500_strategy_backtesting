@@ -16,10 +16,12 @@ The following strategies can be tested:
 <img width="550" height="250" alt="mom_40d_f1p4_dcon100d" src="https://github.com/user-attachments/assets/23071ef3-2d5a-4a4c-9c2d-e1048c9d5339" />
 
 ### Result highlight (2)
-For the strategy tested in Result highlight (1), we obtain the stocks with the most recently triggered buy signals. 
+For the strategy tested in Result highlight (1), we obtain the stocks for which a buy signal triggered in data of the last 1 year. The positives easily outweigh the negatives.<br> 
+<b>Guidelines for investors:</b> i) after the buy signal triggers, buy within 1-2 months; ii) around 1 year after the buy signal triggers, these stocks are meant to be sold, as they are expected to become less profitable.
+
 <!-- DATA_START -->
-Last automatic update: 2026-07-22 10:07<br>
-Buy signal trigger: 40% increase in two successive 40 day periods<br>
+Last automatic update: 2026-07-22 11:43<br>
+Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
