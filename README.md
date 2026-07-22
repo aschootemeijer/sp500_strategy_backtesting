@@ -18,9 +18,9 @@ The following strategies can be tested:
 ### Result highlight (2)
 For the strategy tested in Result highlight (1), we obtain the stocks with the most recently triggered buy signals. 
 <!-- DATA_START -->
-Last automatic update: 2026-07-22 10:01<br>
+Last automatic update: 2026-07-22 10:07<br>
 Buy signal trigger: 40% increase in two successive 40 day periods<br>
-Average increase since trigger: 142.9%<br><table border="1" class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>trigger_date</th>
