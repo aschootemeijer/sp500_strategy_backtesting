@@ -20,7 +20,7 @@ For the strategy tested in Result highlight (1), we obtain the stocks for which 
 <b>Guidelines for investors:</b> i) after the buy signal triggers, buy within 1-2 months; ii) around 1 year after the buy signal triggers, these stocks are meant to be sold, as they are expected to become less profitable.
 
 <!-- DATA_START -->
-Last automatic update: 2026-07-23 22:02<br>
+Last automatic update: 2026-07-24 10:02<br>
 Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
 <table border="1" class="dataframe">
   <thead>
@@ -96,7 +96,7 @@ Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
       <td>2026-05-08</td>
       <td>GLW</td>
       <td>Corning Incorporated</td>
-      <td>🔴 -16.3%</td>
+      <td>🔴 -16.4%</td>
     </tr>
     <tr>
       <td>2026-05-06</td>
@@ -108,13 +108,13 @@ Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
       <td>2026-05-06</td>
       <td>DELL</td>
       <td>Dell Technologies Inc.</td>
-      <td>🟢 84.2%</td>
+      <td>🟢 84.3%</td>
     </tr>
     <tr>
       <td>2026-05-05</td>
       <td>FIX</td>
       <td>Comfort Systems USA, Inc.</td>
-      <td>🔴 -6.7%</td>
+      <td>🔴 -6.9%</td>
     </tr>
     <tr>
       <td>2026-04-24</td>
