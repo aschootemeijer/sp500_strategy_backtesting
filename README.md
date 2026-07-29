@@ -20,7 +20,7 @@ For the strategy tested in Result highlight (1), we obtain the stocks for which 
 <b>Guidelines for investors:</b> i) after the buy signal triggers, buy within 1-2 months; ii) around 1 year after the buy signal triggers, these stocks are meant to be sold, as they are expected to become less profitable.
 
 <!-- DATA_START -->
-Last automatic update: 2026-07-28 10:01<br>
+Last automatic update: 2026-07-29 10:26<br>
 Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
 <table border="1" class="dataframe">
   <thead>
@@ -160,15 +160,15 @@ Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
     </tr>
     <tr>
       <td>2025-11-19</td>
+      <td>SNDK</td>
+      <td>Sandisk Corporation</td>
+      <td>🟢 527.0%</td>
+    </tr>
+    <tr>
+      <td>2025-11-19</td>
       <td>WDC</td>
       <td>Western Digital Corporation</td>
       <td>🟢 216.4%</td>
-    </tr>
-    <tr>
-      <td>2025-11-18</td>
-      <td>SNDK</td>
-      <td>Sandisk Corporation</td>
-      <td>🟢 468.6%</td>
     </tr>
   </tbody>
 </table>
