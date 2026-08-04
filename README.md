@@ -20,7 +20,7 @@ For the strategy tested in Result highlight (1), we obtain the stocks for which 
 <b>Guidelines for investors:</b> i) after the buy signal triggers, buy within 1-2 months; ii) around 1 year after the buy signal triggers, these stocks are meant to be sold, as they are expected to become less profitable.
 
 <!-- DATA_START -->
-Last automatic update: 2026-08-04 10:02<br>
+Last automatic update: 2026-08-04 14:15<br>
 Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
 <table border="1" class="dataframe">
   <thead>
@@ -36,13 +36,13 @@ Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
       <td>2026-07-09</td>
       <td>FTNT</td>
       <td>Fortinet, Inc.</td>
-      <td>🔴 -1.1%</td>
+      <td>🔴 -0.3%</td>
     </tr>
     <tr>
       <td>2026-06-30</td>
       <td>AMAT</td>
       <td>Applied Materials, Inc.</td>
-      <td>🔴 -29.8%</td>
+      <td>🔴 -28.3%</td>
     </tr>
     <tr>
       <td>2026-06-30</td>
@@ -54,85 +54,85 @@ Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
       <td>2026-06-30</td>
       <td>LRCX</td>
       <td>Lam Research Corporation</td>
-      <td>🔴 -32.4%</td>
+      <td>🔴 -32.0%</td>
     </tr>
     <tr>
       <td>2026-06-18</td>
       <td>PANW</td>
       <td>Palo Alto Networks, Inc.</td>
-      <td>🟢 15.3%</td>
+      <td>🟢 20.6%</td>
     </tr>
     <tr>
       <td>2026-06-08</td>
       <td>HUM</td>
       <td>Humana Inc.</td>
-      <td>🟢 2.5%</td>
+      <td>🟢 5.5%</td>
     </tr>
     <tr>
       <td>2026-06-02</td>
       <td>CRWD</td>
       <td>CrowdStrike Holdings, Inc.</td>
-      <td>🔴 -0.7%</td>
+      <td>🟢 5.4%</td>
     </tr>
     <tr>
       <td>2026-05-29</td>
       <td>DDOG</td>
       <td>Datadog, Inc.</td>
-      <td>🟢 8.3%</td>
+      <td>🟢 10.6%</td>
     </tr>
     <tr>
       <td>2026-05-29</td>
       <td>HPE</td>
       <td>Hewlett Packard Enterprise Comp</td>
-      <td>🟢 11.6%</td>
+      <td>🟢 17.1%</td>
     </tr>
     <tr>
       <td>2026-05-14</td>
       <td>ON</td>
       <td>ON Semiconductor Corporation</td>
-      <td>🔴 -31.1%</td>
+      <td>🔴 -32.1%</td>
     </tr>
     <tr>
       <td>2026-05-08</td>
       <td>GLW</td>
       <td>Corning Incorporated</td>
-      <td>🔴 -25.9%</td>
+      <td>🔴 -21.4%</td>
     </tr>
     <tr>
       <td>2026-05-06</td>
       <td>AMD</td>
       <td>Advanced Micro Devices, Inc.</td>
-      <td>🟢 13.0%</td>
+      <td>🟢 15.0%</td>
     </tr>
     <tr>
       <td>2026-05-06</td>
       <td>DELL</td>
       <td>Dell Technologies Inc.</td>
-      <td>🟢 70.0%</td>
+      <td>🟢 80.0%</td>
     </tr>
     <tr>
       <td>2026-05-05</td>
       <td>FIX</td>
       <td>Comfort Systems USA, Inc.</td>
-      <td>🔴 -12.0%</td>
+      <td>🔴 -9.9%</td>
     </tr>
     <tr>
       <td>2026-04-24</td>
       <td>INTC</td>
       <td>Intel Corporation</td>
-      <td>🟢 9.3%</td>
+      <td>🟢 10.2%</td>
     </tr>
     <tr>
       <td>2026-02-06</td>
       <td>TER</td>
       <td>Teradyne, Inc.</td>
-      <td>🟢 22.6%</td>
+      <td>🟢 22.0%</td>
     </tr>
     <tr>
       <td>2026-02-03</td>
       <td>STX</td>
       <td>Seagate Technology Holdings PLC</td>
-      <td>🟢 93.1%</td>
+      <td>🟢 87.4%</td>
     </tr>
     <tr>
       <td>2026-01-21</td>

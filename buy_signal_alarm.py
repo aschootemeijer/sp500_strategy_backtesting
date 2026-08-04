@@ -28,7 +28,7 @@ class BuySignalGenerator( BackTester ):
         strategy_dates, strategy_cashflows, strategy_value_rats, control_dates, control_cashflows, control_value_rats = [],[],[],[],[],[]
         stock_tickers = data_loader.load_sp500( self.sector, self.years_back )
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 5))
-        b = pd.DataFrame( columns = ['stock_ticker','trigger_date'] )
+        b = pd.DataFrame( columns = ['trigger_date','stock_ticker'] )
 
         # EVALUATE stocks; CREATE DATAFRAME of recent buy signal triggers
         for stock_ticker in stock_tickers:
@@ -45,14 +45,20 @@ class BuySignalGenerator( BackTester ):
                 ind = len( b )
                 b.at[ ind, 'stock_ticker' ] = stock_ticker
                 b.at[ ind, 'trigger_date' ] = date0.date()
+                b.at[ ind, 'value_ratio' ]  = strategy_value_ratio 
         b = b.sort_values( by='trigger_date', ascending=False ).reset_index( drop=True )
+
+        # MODIFY DATAFRAME to add column with full name
+        b  = data_loader.get_stock_names( b, 'stock_ticker' )      # adds column: stock_ticker
+        b  = feature_engineer.add_perc_column( b, 'value_ratio' )  # adds column: perc_since_trigger
+        bw = b[[ 'trigger_date','stock_ticker','stock_name','perc_since_trigger']]
         
         # WRITE TO FILE
         datetime_write = datetime.datetime.now().strftime( "%Y-%m-%d %H:%M" )
-        df_write       = b.head(15).to_html( index=False )
+        df_write       = bw.head(25).to_html( index=False )
         datafile2write = ( f"Last automatic update: {datetime_write}<br>\n"
-                           f"Momentum_factor: {self.momentum_factor}; momentum_interval: {self.momentum_interval_in_days} days<br>\n"
-                           f"Most recently triggered buy signals:\n"
+                           f"Buy signal trigger: at least {int(100*(self.momentum_factor-1)+0.5)}% increase in two successive {self.momentum_interval_in_days} day periods<br>\n"
+                           #f"Average increase since trigger: {np.round( np.average(100*(b.value_ratio-1)),1)}%<br>"
                            f"{df_write}" )
         # keep a local list ..
         with open( "auto_upd_buys.txt", "w" ) as f:
@@ -72,7 +78,7 @@ class BuySignalGenerator( BackTester ):
 
         # DISPLAY whole list of stocks; including a graph and calculation of their performace
         pd.set_option('display.max_rows', None)
-        print( '\n\n',b)
+        print( '\n\n',bw)
         strategy_avg_yrly_incr_in_perc = eval_results.calc_xirr( strategy_dates, strategy_cashflows )
         control_avg_yrly_incr_in_perc  = None
         plotter.prettify_and_show( ax1,ax2,self.strategy,strategy_avg_yrly_incr_in_perc,control_avg_yrly_incr_in_perc )
@@ -82,7 +88,7 @@ if __name__ == '__main__':
     strategy        = 'momentum'
     sector          = 'all'
     momentum_factor = 1.4
-    years_back      = 2 
+    years_back      = 1
     track_time      = 183  # in days
     momentum_interval_in_days = 40
     n_control = 0
