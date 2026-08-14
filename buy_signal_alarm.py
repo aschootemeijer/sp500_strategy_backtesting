@@ -11,8 +11,12 @@ import src.analyse_stocks as analyse_stocks
 import src.eval_results as eval_results
 import src.plotter as plotter
 
-overwrite_readme = True
-
+overwrite_readme          = True
+append_to_results         = True
+momentum_factor           = 1.4
+track_time                = 183  # in days
+momentum_interval_in_days = 40
+X00                       = 500
 
 class BuySignalGenerator( BackTester ):
 
@@ -26,7 +30,8 @@ class BuySignalGenerator( BackTester ):
 
         # SET UP a few things before we start evaluating the stocks
         strategy_dates, strategy_cashflows, strategy_value_rats, control_dates, control_cashflows, control_value_rats = [],[],[],[],[],[]
-        stock_tickers = data_loader.load_sp500( self.sector, self.years_back )
+        #stock_tickers = data_loader.load_sp500( self.sector, self.years_back )
+        stock_tickers = data_loader.load_spX00( X00=X00 )
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 5))
         b = pd.DataFrame( columns = ['trigger_date','stock_ticker'] )
 
@@ -60,10 +65,6 @@ class BuySignalGenerator( BackTester ):
                            f"Buy signal trigger: at least {int(100*(self.momentum_factor-1)+0.5)}% increase in two successive {self.momentum_interval_in_days} day periods<br>\n"
                            #f"Average increase since trigger: {np.round( np.average(100*(b.value_ratio-1)),1)}%<br>"
                            f"{df_write}" )
-        # keep a local list ..
-        with open( "auto_upd_buys.txt", "w" ) as f:
-            print( datafile2write, file=f )
-        # .. and insert latest data in README.md
         if overwrite_readme is True:
             # update the readme file that will be upoaded to github
             with open( "README.md", "r" ) as fr:
@@ -82,18 +83,18 @@ class BuySignalGenerator( BackTester ):
         strategy_avg_yrly_incr_in_perc = eval_results.calc_xirr( strategy_dates, strategy_cashflows )
         control_avg_yrly_incr_in_perc  = None
         plotter.prettify_and_show( ax1,ax2,self.strategy,strategy_avg_yrly_incr_in_perc,control_avg_yrly_incr_in_perc )
-            
+
+        # keep a local list with results for different momentum_factors etc
+        with open( "results_of_buysig.txt", "a" ) as f:
+           f.write( f"{strategy_avg_yrly_incr_in_perc},{momentum_factor},{momentum_interval_in_days},{track_time},{len(bw)},{X00}" ) 
 
 if __name__ == '__main__':
-    strategy        = 'momentum'
-    sector          = 'all'
-    momentum_factor = 1.4
-    years_back      = 1
-    track_time      = 183  # in days
-    momentum_interval_in_days = 40
     n_control = 0
+    _strategy        = 'momentum'
+    _sector          = 'all'
+    _years_back      = 1
     _frac_remaining, _frac_bump, _control_offset_in_d = 0.5, 0.2, 0  # we don't use these variables because we 
-    buy_signal_alarm_obj = BuySignalGenerator( strategy, sector, years_back, track_time, momentum_factor, momentum_interval_in_days, 
+    buy_signal_alarm_obj = BuySignalGenerator( _strategy, _sector, _years_back, track_time, momentum_factor, momentum_interval_in_days, 
                            _frac_remaining, _frac_bump, n_control, _control_offset_in_d  )
     buy_signal_alarm_obj.run_buy_signal_alarm()
 

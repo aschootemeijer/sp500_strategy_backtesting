@@ -24,14 +24,19 @@ def get_period_in_yr( df ):
 
 def strategy_value_ratio_and_period_and_yearly_increase( d, r, track_time ):
     dr                      = d.loc[ r: ].copy()
-    date0                   = dr.Date.iloc[0]
+    date0                   = dr.Date.iloc[0] + pd.DateOffset( days=0 )   # DAYS SHOULD BE 0 UNLESS DOING NEXT-LEVEL TESTS
     dateend                 = date0 + pd.DateOffset( days=track_time )
     dr                      = dr[ (dr.Date >= date0) & (dr.Date <= dateend) ]
-    period_in_yr            = get_period_in_yr( dr )
-    value_ratio             = dr.Close.iloc[-1] / dr.Close.iloc[0]
-    yearly_increase_in_perc = np.round( 100*( value_ratio ** (1 / period_in_yr) -1 ), 1 )
+    try:
+        period_in_yr        = get_period_in_yr( dr )
+        value_ratio             = dr.Close.iloc[-1] / dr.Close.iloc[0]
+        yearly_increase_in_perc = np.round( 100*( value_ratio ** (1 / period_in_yr) -1 ), 1 )
+    except Exception:
+        period_in_yr, value_ratio, yearly_increase_in_perc = None, None, None
+        #value_ratio             = dr.Close.iloc[-1] / dr.Close.iloc[0]
+        #yearly_increase_in_perc = np.round( 100*( value_ratio ** (1 / period_in_yr) -1 ), 1 )
     return dr, value_ratio, period_in_yr, yearly_increase_in_perc, date0
-
+ 
 def control_value_ratio_and_period_and_yearly_increase( d,track_time, date0, rand_offset ):
     rand_offset_in_d        = np.random.randint( -rand_offset, rand_offset+1 )
     date0                   = date0 + pd.Timedelta(  days=rand_offset_in_d )
