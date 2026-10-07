@@ -20,7 +20,7 @@ For the strategy tested in Result highlight (1), we obtain the stocks for which 
 <b>Guidelines for investors:</b> i) after the buy signal triggers, buy within 1-2 months; ii) around 1 year after the buy signal triggers, these stocks are meant to be sold, as they are expected to become less profitable.
 
 <!-- DATA_START -->
-Last automatic update: 2026-10-06 22:00<br>
+Last automatic update: 2026-10-07 10:00<br>
 Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
 <table border="1" class="dataframe">
   <thead>
@@ -36,7 +36,7 @@ Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
       <td>2026-10-02</td>
       <td>P</td>
       <td>Everpure, Inc.</td>
-      <td>🟢 4.9%</td>
+      <td>🟢 5.0%</td>
     </tr>
     <tr>
       <td>2026-07-09</td>
@@ -54,13 +54,13 @@ Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
       <td>2026-06-30</td>
       <td>KLAC</td>
       <td>KLA Corporation</td>
-      <td>🔴 -34.4%</td>
+      <td>🔴 -34.5%</td>
     </tr>
     <tr>
       <td>2026-06-30</td>
       <td>AMAT</td>
       <td>Applied Materials, Inc.</td>
-      <td>🔴 -26.7%</td>
+      <td>🔴 -26.6%</td>
     </tr>
     <tr>
       <td>2026-06-18</td>
@@ -72,13 +72,13 @@ Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
       <td>2026-06-08</td>
       <td>HUM</td>
       <td>Humana Inc.</td>
-      <td>🟢 14.4%</td>
+      <td>🟢 13.8%</td>
     </tr>
     <tr>
       <td>2026-06-02</td>
       <td>CRWD</td>
       <td>CrowdStrike Holdings, Inc.</td>
-      <td>🟢 45.2%</td>
+      <td>🟢 45.1%</td>
     </tr>
     <tr>
       <td>2026-05-29</td>
@@ -114,49 +114,49 @@ Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
       <td>2026-05-06</td>
       <td>AMD</td>
       <td>Advanced Micro Devices, Inc.</td>
-      <td>🟢 54.0%</td>
+      <td>🟢 54.1%</td>
     </tr>
     <tr>
       <td>2026-05-06</td>
       <td>FLEX</td>
       <td>Flex Ltd.</td>
-      <td>🔴 -9.8%</td>
+      <td>🔴 -9.9%</td>
     </tr>
     <tr>
       <td>2026-05-06</td>
       <td>DELL</td>
       <td>Dell Technologies Inc.</td>
-      <td>🟢 140.0%</td>
+      <td>🟢 140.8%</td>
     </tr>
     <tr>
       <td>2026-05-05</td>
       <td>FIX</td>
       <td>Comfort Systems USA, Inc.</td>
-      <td>🔴 -7.3%</td>
+      <td>🔴 -7.5%</td>
     </tr>
     <tr>
       <td>2026-05-05</td>
       <td>MRVL</td>
       <td>Marvell Technology, Inc.</td>
-      <td>🟢 70.3%</td>
+      <td>🟢 70.1%</td>
     </tr>
     <tr>
       <td>2026-04-24</td>
       <td>INTC</td>
       <td>Intel Corporation</td>
-      <td>🟢 36.2%</td>
+      <td>🟢 36.3%</td>
     </tr>
     <tr>
       <td>2026-04-14</td>
       <td>BE</td>
       <td>Bloom Energy Corporation</td>
-      <td>🟢 35.5%</td>
+      <td>🟢 35.0%</td>
     </tr>
     <tr>
       <td>2026-03-17</td>
       <td>CIEN</td>
       <td>Ciena Corporation</td>
-      <td>🟢 20.3%</td>
+      <td>🟢 19.9%</td>
     </tr>
     <tr>
       <td>2026-03-02</td>
