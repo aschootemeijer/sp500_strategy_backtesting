@@ -36,6 +36,11 @@ def load_spX00( X00 = 500 ): # 400, 500, or 600
     stock_ticker_list = spX00['Symbol'].tolist()
     return stock_ticker_list 
 
+def load_eur600( ):
+    d = pd.read_csv( "/mnt/c/Users/hp/Desktop/dinges/fin/historical_data/eur600.csv" )
+    #d = pd.read_csv( "/mnt/c/Users/hp/Desktop/dinges/fin/historical_data/ishares_eur600.csv" )
+    print(d)
+    return d["Ticker"].tolist()
 
 def get_stock_data( stock_ticker, years_back ):
     try:
@@ -74,6 +79,6 @@ def clean_stock_data( d ):
 
 if __name__ == "__main__":
     print( load_spX00( X00 = 600 ) )
-
+    
     #d = pd.DataFrame( {'val':[10, 7], 'ticker':['NVDA', 'KLAC']} )
     #d = get_stock_names( d, 'ticker' )

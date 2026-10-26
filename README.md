@@ -20,7 +20,7 @@ For the strategy tested in Result highlight (1), we obtain the stocks for which 
 <b>Guidelines for investors:</b> i) after the buy signal triggers, buy within 1-2 months; ii) around 1 year after the buy signal triggers, these stocks are meant to be sold, as they are expected to become less profitable.
 
 <!-- DATA_START -->
-Last automatic update: 2026-10-23 09:59<br>
+Last automatic update: 2026-10-26 15:12<br>
 Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
 <table border="1" class="dataframe">
   <thead>
@@ -33,154 +33,136 @@ Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
   </thead>
   <tbody>
     <tr>
-      <td>2026-10-02</td>
-      <td>P</td>
-      <td>Everpure, Inc.</td>
-      <td>🔴 -13.5%</td>
+      <td>2026-10-22</td>
+      <td>ACN</td>
+      <td>Accenture plc</td>
+      <td>🔴 -3.1%</td>
     </tr>
     <tr>
       <td>2026-07-09</td>
       <td>FTNT</td>
       <td>Fortinet, Inc.</td>
-      <td>🟢 5.6%</td>
-    </tr>
-    <tr>
-      <td>2026-06-30</td>
-      <td>LRCX</td>
-      <td>Lam Research Corporation</td>
-      <td>🔴 -46.8%</td>
-    </tr>
-    <tr>
-      <td>2026-06-30</td>
-      <td>KLAC</td>
-      <td>KLA Corporation</td>
-      <td>🔴 -50.9%</td>
+      <td>🟢 10.3%</td>
     </tr>
     <tr>
       <td>2026-06-30</td>
       <td>AMAT</td>
       <td>Applied Materials, Inc.</td>
-      <td>🔴 -48.0%</td>
+      <td>🔴 -47.3%</td>
+    </tr>
+    <tr>
+      <td>2026-06-30</td>
+      <td>KLAC</td>
+      <td>KLA Corporation</td>
+      <td>🔴 -50.7%</td>
+    </tr>
+    <tr>
+      <td>2026-06-30</td>
+      <td>LRCX</td>
+      <td>Lam Research Corporation</td>
+      <td>🔴 -45.6%</td>
     </tr>
     <tr>
       <td>2026-06-18</td>
       <td>PANW</td>
       <td>Palo Alto Networks, Inc.</td>
-      <td>🟢 23.3%</td>
+      <td>🟢 34.5%</td>
     </tr>
     <tr>
       <td>2026-06-08</td>
       <td>HUM</td>
       <td>Humana Inc.</td>
-      <td>🟢 18.5%</td>
+      <td>🟢 20.7%</td>
     </tr>
     <tr>
       <td>2026-06-02</td>
       <td>CRWD</td>
       <td>CrowdStrike Holdings, Inc.</td>
-      <td>🟢 23.8%</td>
-    </tr>
-    <tr>
-      <td>2026-06-01</td>
-      <td>TWLO</td>
-      <td>Twilio Inc.</td>
-      <td>🟢 11.5%</td>
+      <td>🟢 34.0%</td>
     </tr>
     <tr>
       <td>2026-05-29</td>
       <td>DDOG</td>
       <td>Datadog, Inc.</td>
-      <td>🟢 4.2%</td>
+      <td>🟢 9.5%</td>
     </tr>
     <tr>
       <td>2026-05-29</td>
       <td>HPE</td>
       <td>Hewlett Packard Enterprise Comp</td>
-      <td>🟢 29.6%</td>
+      <td>🟢 34.0%</td>
     </tr>
     <tr>
       <td>2026-05-14</td>
       <td>ON</td>
       <td>ON Semiconductor Corporation</td>
-      <td>🔴 -38.1%</td>
-    </tr>
-    <tr>
-      <td>2026-05-11</td>
-      <td>VRT</td>
-      <td>Vertiv Holdings, LLC</td>
-      <td>🔴 -46.8%</td>
+      <td>🔴 -38.6%</td>
     </tr>
     <tr>
       <td>2026-05-08</td>
       <td>GLW</td>
       <td>Corning Incorporated</td>
-      <td>🔴 -33.4%</td>
+      <td>🔴 -33.7%</td>
     </tr>
     <tr>
-      <td>2026-05-06</td>
-      <td>AMD</td>
-      <td>Advanced Micro Devices, Inc.</td>
-      <td>🟢 20.5%</td>
-    </tr>
-    <tr>
-      <td>2026-05-06</td>
-      <td>FLEX</td>
-      <td>Flex Ltd.</td>
-      <td>🔴 -43.1%</td>
+      <td>2026-05-08</td>
+      <td>MU</td>
+      <td>Micron Technology, Inc.</td>
+      <td>🟢 18.7%</td>
     </tr>
     <tr>
       <td>2026-05-06</td>
       <td>DELL</td>
       <td>Dell Technologies Inc.</td>
-      <td>🟢 90.3%</td>
+      <td>🟢 91.6%</td>
     </tr>
     <tr>
-      <td>2026-05-05</td>
-      <td>MRVL</td>
-      <td>Marvell Technology, Inc.</td>
-      <td>🟢 32.5%</td>
+      <td>2026-05-06</td>
+      <td>AMD</td>
+      <td>Advanced Micro Devices, Inc.</td>
+      <td>🟢 22.4%</td>
     </tr>
     <tr>
       <td>2026-05-05</td>
       <td>FIX</td>
       <td>Comfort Systems USA, Inc.</td>
-      <td>🔴 -34.9%</td>
+      <td>🔴 -37.3%</td>
     </tr>
     <tr>
       <td>2026-04-24</td>
       <td>INTC</td>
       <td>Intel Corporation</td>
-      <td>🟢 3.6%</td>
+      <td>🟢 5.4%</td>
     </tr>
     <tr>
       <td>2026-04-22</td>
       <td>STX</td>
       <td>Seagate Technology Holdings PLC</td>
-      <td>🟢 10.9%</td>
-    </tr>
-    <tr>
-      <td>2026-04-14</td>
-      <td>BE</td>
-      <td>Bloom Energy Corporation</td>
-      <td>🔴 -0.6%</td>
-    </tr>
-    <tr>
-      <td>2026-03-17</td>
-      <td>CIEN</td>
-      <td>Ciena Corporation</td>
-      <td>🔴 -12.8%</td>
-    </tr>
-    <tr>
-      <td>2026-03-02</td>
-      <td>COHR</td>
-      <td>Coherent Corp.</td>
-      <td>🔴 -30.5%</td>
+      <td>🟢 8.7%</td>
     </tr>
     <tr>
       <td>2026-02-24</td>
       <td>MRNA</td>
       <td>Moderna, Inc.</td>
-      <td>🟢 301.1%</td>
+      <td>🟢 294.8%</td>
+    </tr>
+    <tr>
+      <td>2026-02-23</td>
+      <td>SNDK</td>
+      <td>Sandisk Corporation</td>
+      <td>🟢 86.7%</td>
+    </tr>
+    <tr>
+      <td>2026-02-23</td>
+      <td>TER</td>
+      <td>Teradyne, Inc.</td>
+      <td>🔴 -3.1%</td>
+    </tr>
+    <tr>
+      <td>2026-02-23</td>
+      <td>WDC</td>
+      <td>Western Digital Corporation</td>
+      <td>🟢 23.8%</td>
     </tr>
   </tbody>
 </table>

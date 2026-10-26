@@ -4,13 +4,14 @@ from scipy import stats
 from scipy.optimize import newton
 
 
-def calc_xirr( dates, cashflows ):
+def calc_xirr( dates, cashflows, use_utc ):
     """
     (X)IRR: Internal Rate of Return (or annual return)
     XNPV:   eXtended Net Present Value. Essentially uses time difference between cashflows.
     The correct rate (annual return) is the one for which the sum of the XNPV is zero
     """
-    dates = pd.to_datetime( dates )
+    #dates = pd.to_datetime( dates )
+    dates = pd.to_datetime( dates, utc=use_utc )
     start_date = min(dates)
     def xnpv(rate, cashflows, dates):
         start_date = min(dates)

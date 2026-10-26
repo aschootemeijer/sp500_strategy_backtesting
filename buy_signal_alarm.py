@@ -11,12 +11,22 @@ import src.analyse_stocks as analyse_stocks
 import src.eval_results as eval_results
 import src.plotter as plotter
 
-overwrite_readme          = True
-append_to_results         = True
-momentum_factor           = 1.4
-track_time                = 183  # in days
-momentum_interval_in_days = 40
-X00                       = 500
+
+# SETTINGS
+ 
+momentum_factor           = 1.40     # factor by which the stock has to increase - twice in a row
+momentum_interval_in_days = 40       # period in which the momentum the stock should increase by the momentum_factor
+track_time                = 365      # in days
+X00                       = 500      # 400, 500, or 600. What do we investigate? Enter 500 for S&P 500, 400 for S&P400 ('mid caps') and 600 for 'small caps'
+do_eur_stocks_instead     = False    # if True, we investigate the 600 biggest market cap stocks from Europe
+
+# save data?
+do_alter_readme           = True     # set to False when doing test runs etc
+append_to_results         = False    # to save data on runs with different momentum factor or momentum interval
+
+# line below is for safety: we only want to write S&P500 data the README.
+overwrite_readme          = False if (do_eur_stocks_instead or X00!=500 or do_alter_readme!=True) else True   
+
 
 class BuySignalGenerator( BackTester ):
 
@@ -31,7 +41,14 @@ class BuySignalGenerator( BackTester ):
         # SET UP a few things before we start evaluating the stocks
         strategy_dates, strategy_cashflows, strategy_value_rats, control_dates, control_cashflows, control_value_rats = [],[],[],[],[],[]
         #stock_tickers = data_loader.load_sp500( self.sector, self.years_back )
-        stock_tickers = data_loader.load_spX00( X00=X00 )
+        if do_eur_stocks_instead:
+            stock_tickers = data_loader.load_eur600( )
+        else:
+            if X00 == 500: 
+                stock_tickers = data_loader.load_sp500( self.sector, self.years_back )
+            else: 
+                stock_tickers = data_loader.load_spX00( X00=X00 )  # deze stond aan voor eur test
+        #stock_tickers = stock_tickers[:40]
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 5))
         b = pd.DataFrame( columns = ['trigger_date','stock_ticker'] )
 
@@ -52,6 +69,7 @@ class BuySignalGenerator( BackTester ):
                 b.at[ ind, 'trigger_date' ] = date0.date()
                 b.at[ ind, 'value_ratio' ]  = strategy_value_ratio 
         b = b.sort_values( by='trigger_date', ascending=False ).reset_index( drop=True )
+        
 
         # MODIFY DATAFRAME to add column with full name
         b  = data_loader.get_stock_names( b, 'stock_ticker' )      # adds column: stock_ticker
@@ -65,7 +83,7 @@ class BuySignalGenerator( BackTester ):
                            f"Buy signal trigger: at least {int(100*(self.momentum_factor-1)+0.5)}% increase in two successive {self.momentum_interval_in_days} day periods<br>\n"
                            #f"Average increase since trigger: {np.round( np.average(100*(b.value_ratio-1)),1)}%<br>"
                            f"{df_write}" )
-        if overwrite_readme is True:
+        if overwrite_readme:
             # update the readme file that will be upoaded to github
             with open( "README.md", "r" ) as fr:
                 readme_content = fr.read()
@@ -77,24 +95,26 @@ class BuySignalGenerator( BackTester ):
             with open( "README.md", "w" ) as fw:
                 fw.write( updated_readme_content )
 
-        # DISPLAY whole list of stocks; including a graph and calculation of their performace
+        # DISPLAY whole list of stocks, including a calculation of their performace
         pd.set_option('display.max_rows', None)
         print( '\n\n',bw)
-        strategy_avg_yrly_incr_in_perc = eval_results.calc_xirr( strategy_dates, strategy_cashflows )
+        utc_flag = True if do_eur_stocks_instead else False
+        strategy_avg_yrly_incr_in_perc = eval_results.calc_xirr( strategy_dates, strategy_cashflows, use_utc=utc_flag )
         control_avg_yrly_incr_in_perc  = None
         plotter.prettify_and_show( ax1,ax2,self.strategy,strategy_avg_yrly_incr_in_perc,control_avg_yrly_incr_in_perc )
 
         # keep a local list with results for different momentum_factors etc
-        with open( "results_of_buysig.txt", "a" ) as f:
-           f.write( f"{strategy_avg_yrly_incr_in_perc},{momentum_factor},{momentum_interval_in_days},{track_time},{len(bw)},{X00}" ) 
+        if append_to_results:
+            with open( "notes_and_tests/results_of_buysig.txt", "a" ) as f:
+                f.write( f"\n{strategy_avg_yrly_incr_in_perc},{momentum_factor},{momentum_interval_in_days},{track_time},{len(bw)},{X00}\n" ) 
 
 if __name__ == '__main__':
-    n_control = 0
+    n_control        = 1
     _strategy        = 'momentum'
     _sector          = 'all'
-    _years_back      = 1
+    years_back       = 1 
     _frac_remaining, _frac_bump, _control_offset_in_d = 0.5, 0.2, 0  # we don't use these variables because we 
-    buy_signal_alarm_obj = BuySignalGenerator( _strategy, _sector, _years_back, track_time, momentum_factor, momentum_interval_in_days, 
+    buy_signal_alarm_obj = BuySignalGenerator( _strategy, _sector, years_back, track_time, momentum_factor, momentum_interval_in_days, 
                            _frac_remaining, _frac_bump, n_control, _control_offset_in_d  )
     buy_signal_alarm_obj.run_buy_signal_alarm()
 
