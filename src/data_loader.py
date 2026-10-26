@@ -10,12 +10,21 @@ def load_sp500_fromlist( years_back ):
     sp500 = sp500_all[ (sp500_all.date.dt.year == then.year) & (sp500_all.date.dt.month == then.month) ] 
     return sp500.iloc[0,1:].dropna().tolist()
     
-def load_sp500( years_back ):
+def read_sp500_wikipedia( ):
     url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
     headers = {"User-Agent": "Mozilla/5.0"}    # else we get access denied
     r = requests.get(url, headers=headers)
     r.raise_for_status()
-    sp500 = pd.read_html( StringIO( r.text ) )[0]
+    return pd.read_html( StringIO( r.text ) )[0]
+
+def load_sp500_dates_added( ):
+    # date each current S&P500 stock was added to the index, e.g. dates_added['P'] -> 2026-09-21
+    sp500 = read_sp500_wikipedia( )
+    sp500['Symbol'] = sp500['Symbol'].str.replace( '.', '-', regex=False )   # Yahoo writes BRK.B as BRK-B
+    return pd.to_datetime( sp500.set_index( 'Symbol' )['Date added'] )
+
+def load_sp500( years_back ):
+    sp500 = read_sp500_wikipedia( )
     #print( sp500.columns )
     #print( sp500[['Symbol','Security','GICS Sub-Industry']] )
     # these two lines below are to prevent bias: remove succesfull stocks that were added after years_back

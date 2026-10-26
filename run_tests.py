@@ -51,13 +51,14 @@ class BackTester:
         self.control_offset_in_d       = control_offset_in_d
         self.excluded_years            = excluded_years
 
-    def strategy_test_stock( self, stock_ticker ):
+    def strategy_test_stock( self, stock_ticker, earliest_trigger_date=None ):
 
         """
-        Evaluates the chosen STRATEGY for a specific stock. 
-        This method will be called by the run_test(...) method below        
- 
+        Evaluates the chosen STRATEGY for a specific stock.
+        This method will be called by the run_test(...) method below
+
         Arguments: stock_ticker (for example, 'MSFT' for Microsoft)
+                   earliest_trigger_date (optional): buy signals before this date are ignored
         Returns:   - stock data ( i. over whole considered period and ii. between buy and sell signal), 
                    - results of evaluation: stock value ratio at sell/buy moment, holding period, yearly increase
                    - date the buy signal triggered
@@ -68,7 +69,10 @@ class BackTester:
            return None, None, None, None, None, None
         d = data_loader.clean_stock_data( d )
         d = feature_engineer.feature_engineer_data( d, self.momentum_interval_in_days )
-        r = analyse_stocks.get_index_of_buy_moment( d, self.strategy, self.momentum_factor, self.momentum_interval_in_days, self.frac_remaining, self.frac_bump )
+        d_search = d   # the part of the data where we look for the buy signal
+        if pd.notna( earliest_trigger_date ):   # e.g. ignore buy signals from before the stock was added to the S&P500
+            d_search = d[ d.Date.dt.tz_localize( None ) >= earliest_trigger_date ]
+        r = analyse_stocks.get_index_of_buy_moment( d_search, self.strategy, self.momentum_factor, self.momentum_interval_in_days, self.frac_remaining, self.frac_bump )
         if pd.isna( r ): 
            return None, None, None, None, None, None
         dr, strategy_value_ratio, strategy_period, strategy_yrly_incr_in_perc, date0 = analyse_stocks.strategy_value_ratio_and_period_and_yearly_increase( d, r, self.track_time )

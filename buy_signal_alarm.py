@@ -41,14 +41,16 @@ class BuySignalGenerator( BackTester ):
 
         # SET UP a few things before we start evaluating the stocks
         strategy_dates, strategy_cashflows, strategy_value_rats, control_dates, control_cashflows, control_value_rats = [],[],[],[],[],[]
-        #stock_tickers = data_loader.load_sp500( self.years_back )
+        dates_added = {}   # only known for the S&P500
         if do_eur_stocks_instead:
             stock_tickers = data_loader.load_eur600( )
         else:
-            if X00 == 500: 
-                stock_tickers = data_loader.load_sp500( self.years_back )
-            else: 
-                stock_tickers = data_loader.load_spX00( X00=X00 )  # deze stond aan voor eur test
+            if X00 == 500:
+                # we only count buy signals that triggered after the stock was added to the S&P500
+                dates_added   = data_loader.load_sp500_dates_added( )
+                stock_tickers = dates_added.index.tolist()
+            else:
+                stock_tickers = data_loader.load_spX00( X00=X00 )
         #stock_tickers = stock_tickers[:40]
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 5))
         b = pd.DataFrame( columns = ['trigger_date','stock_ticker'] )
@@ -56,7 +58,7 @@ class BuySignalGenerator( BackTester ):
         # EVALUATE stocks; CREATE DATAFRAME of recent buy signal triggers
         for stock_ticker in stock_tickers:
             print( f'\n{stock_ticker}' )
-            d, dr, strategy_value_ratio, strategy_period, strategy_yrly_incr_in_perc, date0 = self.strategy_test_stock( stock_ticker )
+            d, dr, strategy_value_ratio, strategy_period, strategy_yrly_incr_in_perc, date0 = self.strategy_test_stock( stock_ticker, earliest_trigger_date=dates_added.get( stock_ticker ) )
 
             # Proceed only with stocks for which the buy signal triggered
             if strategy_value_ratio is not None:
