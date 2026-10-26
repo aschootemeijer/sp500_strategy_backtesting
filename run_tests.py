@@ -16,10 +16,9 @@ start_time = time.time()
 years_back                = 10  # we analyse the data of the last how many years?
 track_time                = 365 # in days: for how long do we follow the stock after we 'bought' them?
 strategy                  = 'early_recovery'      # momentum, declining, early_recovery, or all (random) 
-sector                    = 'all'#'Information Technology'  # 'all' is also allowed.
 n_control                 = 1   # number of stocks we 'buy' at the same time as when the 'buy' signal triggers
 control_offset_in_d       = 0     # we offset the control buying moment to reduce bias
-excluded_years            = 2020] #[2020,2021, 2025, 2026]  # exclude, e.g., years after market crashes. Because those might not be relevant to the current situation.
+excluded_years            = [] #[2020,2021, 2025, 2026]  # exclude, e.g., years after market crashes. Because those might not be relevant to the current situation.
 
 
 # For MOMENTUM strategy:
@@ -39,9 +38,9 @@ class BackTester:
     Things that can be are inserted in __init__ (initialization).
     """
 
-    def __init__( self, strategy, sector, years_back, track_time, momentum_factor, momentum_interval_in_days, frac_remaining, frac_bump, n_control, control_offset_in_d ):
+    def __init__( self, strategy, years_back, track_time, momentum_factor=None, momentum_interval_in_days=None,
+                  frac_remaining=None, frac_bump=None, n_control=1, control_offset_in_d=0, excluded_years=() ):
         self.strategy                  = strategy
-        self.sector                    = sector
         self.years_back                = years_back
         self.track_time                = track_time
         self.momentum_factor           = momentum_factor
@@ -50,6 +49,7 @@ class BackTester:
         self.frac_bump                 = frac_bump
         self.n_control                 = n_control
         self.control_offset_in_d       = control_offset_in_d
+        self.excluded_years            = excluded_years
 
     def strategy_test_stock( self, stock_ticker ):
 
@@ -104,8 +104,8 @@ class BackTester:
 
         #         PREPARE for looping over the stocks in the stock_tickers list
         strategy_dates, strategy_cashflows, strategy_value_rats, control_dates, control_cashflows, control_value_rats = [],[],[],[],[],[]
-        #stock_tickers = data_loader.load_sp500( self.sector, self.years_back )
-        stock_tickers = data_loader.load_sp500_fromlist( self.sector, self.years_back )   # load S&P500 at that time from a premade list. Works after 2008
+        #stock_tickers = data_loader.load_sp500( self.years_back )
+        stock_tickers = data_loader.load_sp500_fromlist( self.years_back )   # load S&P500 at that time from a premade list. Works after 2008
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 5))
 
         #         START the loop
@@ -116,7 +116,7 @@ class BackTester:
 
             #     Evaluate STRATEGY stocks for which the buy signal triggered
             if strategy_value_ratio is not None:
-                if date0.year in excluded_years: continue
+                if date0.year in self.excluded_years: continue
                 print( stock_ticker, strategy_value_ratio, strategy_period*365, date0.date())#, strategy_yrly_incr_in_perc )
 
                 #print( dr )
@@ -133,7 +133,7 @@ class BackTester:
                 strategy_cashflows.extend( [ -1,strategy_value_ratio ] )
 
                 # Get value ratio and data for a CONTROL stock for reference.
-                for i in range( n_control ):
+                for i in range( self.n_control ):
                     control_stock_ticker = np.random.choice( stock_tickers )
                     c, cr, control_value_ratio, control_period, control_yrly_incr_in_perc = self.control_test_stock( control_stock_ticker, date0 )
                     if control_value_ratio is not None:
@@ -148,32 +148,33 @@ class BackTester:
         control_avg_yrly_incr_in_perc  = eval_results.calc_xirr( control_dates,  control_cashflows,  use_utc=True )
         print( f'\nAverage yearly increase of STRATEGY (N={len(strategy_dates)/2}): {self.strategy} = {strategy_avg_yrly_incr_in_perc}%' )
         print(   f'Average yearly increase of CONTROL (N={len(control_dates)/2}) stocks = {control_avg_yrly_incr_in_perc}%\n' )
-        print( self.momentum_interval_in_days, self.momentum_factor, track_time, strategy_avg_yrly_incr_in_perc, control_avg_yrly_incr_in_perc, int(len( strategy_dates)/2+0.5) )
+        print( self.momentum_interval_in_days, self.momentum_factor, self.track_time, strategy_avg_yrly_incr_in_perc, control_avg_yrly_incr_in_perc, int(len( strategy_dates)/2+0.5) )
         print( 'KS test:', eval_results.calc_p_value( strategy_value_rats, control_value_rats ) )
         print( f'That took {int(time.time()-start_time+0.5)} s'  )
 
         # keep a local list with results for different momentum_factors etc
         with open( "results_of_runtest_er_10y_not20.txt", "a" ) as f:
-            #f.write( f"\n{strategy_avg_yrly_incr_in_perc},{self.momentum_factor},{self.momentum_interval_in_days},{track_time},{int(len( strategy_dates)/2+0.5)}" ) 
-            f.write( f"\n{strategy_avg_yrly_incr_in_perc},{self.frac_remaining},{self.frac_bump},{track_time},{int(len( strategy_dates)/2+0.5)}" ) 
+            #f.write( f"\n{strategy_avg_yrly_incr_in_perc},{self.momentum_factor},{self.momentum_interval_in_days},{self.track_time},{int(len( strategy_dates)/2+0.5)}" ) 
+            f.write( f"\n{strategy_avg_yrly_incr_in_perc},{self.frac_remaining},{self.frac_bump},{self.track_time},{int(len( strategy_dates)/2+0.5)}" ) 
 
         plotter.prettify_and_show( ax1,ax2,self.strategy,strategy_avg_yrly_incr_in_perc,control_avg_yrly_incr_in_perc )
 
                 
 """
 if __name__ == '__main__':
-    momtest = BackTester( strategy, sector, years_back, track_time, momentum_factor, momentum_interval_in_days, 
-                          frac_remaining, frac_bump, n_control, control_offset_in_d )
+    momtest = BackTester( strategy, years_back, track_time, momentum_factor, momentum_interval_in_days, 
+                          frac_remaining, frac_bump, n_control, control_offset_in_d, excluded_years )
     momtest.run_test()
 
 """
 
-track_time = 365
+
+# Use this block when DOING TESTS
 if __name__ == '__main__':
     #for momentum_interval_in_days in [13]:
     #    for momentum_factor in [1.35]:
     for frac_remaining in [0.1, 0.15, 0.2, 0.25, 0.3]:
         for frac_bump in [1]:
-            momtest = BackTester( strategy, sector, years_back, track_time, momentum_factor, momentum_interval_in_days,
-                          frac_remaining, frac_bump, n_control, control_offset_in_d )
+            momtest = BackTester( strategy, years_back, track_time, momentum_factor, momentum_interval_in_days,
+                          frac_remaining, frac_bump, n_control, control_offset_in_d, excluded_years )
             momtest.run_test() 

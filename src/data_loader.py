@@ -4,26 +4,24 @@ import requests
 from io import StringIO
 import datetime
 
-def load_sp500_fromlist( _sector, years_back ):
+def load_sp500_fromlist( years_back ):
     sp500_all = pd.read_csv( '/mnt/c/Users/hp/Desktop/dinges/fin/experimenteren/tickerlists/sp500_monthly.csv', parse_dates=['date'] )
-    then  = datetime.datetime.now() - pd.offsets.DateOffset( years=10 )
+    then  = datetime.datetime.now() - pd.offsets.DateOffset( years=years_back )
     sp500 = sp500_all[ (sp500_all.date.dt.year == then.year) & (sp500_all.date.dt.month == then.month) ] 
     return sp500.iloc[0,1:].dropna().tolist()
     
-def load_sp500( sector, years_back ):
+def load_sp500( years_back ):
     url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
     headers = {"User-Agent": "Mozilla/5.0"}    # else we get access denied
     r = requests.get(url, headers=headers)
     r.raise_for_status()
     sp500 = pd.read_html( StringIO( r.text ) )[0]
-    if not sector == 'all':
-        sp500 = sp500[ sp500['GICS Sector'] == sector ]
     #print( sp500.columns )
     #print( sp500[['Symbol','Security','GICS Sub-Industry']] )
     # these two lines below are to prevent bias: remove succesfull stocks that were added after years_back
     sp500['Date added'] = pd.to_datetime( sp500['Date added'] )
     sp500 = sp500[ sp500["Date added"].dt.year <= datetime.datetime.now().year - years_back ]
-    stock_ticker_list = sp500['Symbol'].tolist()
+    stock_ticker_list = sp500['Symbol'].str.replace( '.', '-', regex=False ).tolist()   # Yahoo writes BRK.B as BRK-B
     return stock_ticker_list
 
 def load_spX00( X00 = 500 ): # 400, 500, or 600
@@ -33,7 +31,7 @@ def load_spX00( X00 = 500 ): # 400, 500, or 600
     r = requests.get(url, headers=headers)
     r.raise_for_status()
     spX00 = pd.read_html( StringIO( r.text ) )[0]
-    stock_ticker_list = spX00['Symbol'].tolist()
+    stock_ticker_list = spX00['Symbol'].str.replace( '.', '-', regex=False ).tolist()   # Yahoo writes BRK.B as BRK-B
     return stock_ticker_list 
 
 def load_eur600( ):

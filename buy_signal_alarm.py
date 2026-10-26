@@ -17,6 +17,7 @@ import src.plotter as plotter
 momentum_factor           = 1.40     # factor by which the stock has to increase - twice in a row
 momentum_interval_in_days = 40       # period in which the momentum the stock should increase by the momentum_factor
 track_time                = 365      # in days
+years_back                = 1        # we look for buy signals that triggered in the last how many years?
 X00                       = 500      # 400, 500, or 600. What do we investigate? Enter 500 for S&P 500, 400 for S&P400 ('mid caps') and 600 for 'small caps'
 do_eur_stocks_instead     = False    # if True, we investigate the 600 biggest market cap stocks from Europe
 
@@ -40,12 +41,12 @@ class BuySignalGenerator( BackTester ):
 
         # SET UP a few things before we start evaluating the stocks
         strategy_dates, strategy_cashflows, strategy_value_rats, control_dates, control_cashflows, control_value_rats = [],[],[],[],[],[]
-        #stock_tickers = data_loader.load_sp500( self.sector, self.years_back )
+        #stock_tickers = data_loader.load_sp500( self.years_back )
         if do_eur_stocks_instead:
             stock_tickers = data_loader.load_eur600( )
         else:
             if X00 == 500: 
-                stock_tickers = data_loader.load_sp500( self.sector, self.years_back )
+                stock_tickers = data_loader.load_sp500( self.years_back )
             else: 
                 stock_tickers = data_loader.load_spX00( X00=X00 )  # deze stond aan voor eur test
         #stock_tickers = stock_tickers[:40]
@@ -106,15 +107,11 @@ class BuySignalGenerator( BackTester ):
         # keep a local list with results for different momentum_factors etc
         if append_to_results:
             with open( "notes_and_tests/results_of_buysig.txt", "a" ) as f:
-                f.write( f"\n{strategy_avg_yrly_incr_in_perc},{momentum_factor},{momentum_interval_in_days},{track_time},{len(bw)},{X00}\n" ) 
+                f.write( f"\n{strategy_avg_yrly_incr_in_perc},{self.momentum_factor},{self.momentum_interval_in_days},{self.track_time},{len(bw)},{X00}\n" ) 
 
 if __name__ == '__main__':
-    n_control        = 1
-    _strategy        = 'momentum'
-    _sector          = 'all'
-    years_back       = 1 
-    _frac_remaining, _frac_bump, _control_offset_in_d = 0.5, 0.2, 0  # we don't use these variables because we 
-    buy_signal_alarm_obj = BuySignalGenerator( _strategy, _sector, years_back, track_time, momentum_factor, momentum_interval_in_days, 
-                           _frac_remaining, _frac_bump, n_control, _control_offset_in_d  )
+    # strategy is fixed to 'momentum': the text we write to the README describes the momentum buy signal
+    buy_signal_alarm_obj = BuySignalGenerator( strategy='momentum', years_back=years_back, track_time=track_time,
+                                               momentum_factor=momentum_factor, momentum_interval_in_days=momentum_interval_in_days )
     buy_signal_alarm_obj.run_buy_signal_alarm()
 

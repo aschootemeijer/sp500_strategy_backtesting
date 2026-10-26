@@ -197,14 +197,14 @@ The framework is built with a modular, OOP approach following the Separation of 
 
 <!-- One can simply change:
 if __name__ == '__main__':
-    momtest = BackTester( strategy, sector, years_back, track_time, momentum_factor, momentum_interval_in_days,
+    momtest = BackTester( strategy, years_back, track_time, momentum_factor, momentum_interval_in_days,
                           frac_remaining, frac_bump, n_control, control_offset_in_d )
     momtest.run_test()
 into:
 if __name__ == '__main__':
     for momentum_factor in [1.3, 1.35, 1.4, 1.45, 1.5]:
         for momentum_interval_in_days in [30, 60, 90, 120]:
-            momtest = BackTester( strategy, sector, years_back, track_time, momentum_factor, momentum_interval_in_days,
+            momtest = BackTester( strategy, years_back, track_time, momentum_factor, momentum_interval_in_days,
                           frac_remaining, frac_bump, n_control, control_offset_in_d )
             momtest.run_test()
             -->
