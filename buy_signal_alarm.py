@@ -81,7 +81,7 @@ class BuySignalGenerator( BackTester ):
         
         # WRITE TO FILE
         datetime_write = datetime.datetime.now().strftime( "%Y-%m-%d %H:%M" )
-        df_write       = bw.head(25).to_html( index=False )
+        df_write       = bw.head(40).to_html( index=False )
         datafile2write = ( f"Last automatic update: {datetime_write}<br>\n"
                            f"Buy signal trigger: at least {int(100*(self.momentum_factor-1)+0.5)}% increase in two successive {self.momentum_interval_in_days} day periods<br>\n"
                            #f"Average increase since trigger: {np.round( np.average(100*(b.value_ratio-1)),1)}%<br>"
