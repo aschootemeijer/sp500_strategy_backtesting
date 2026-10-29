@@ -3,6 +3,7 @@ import pandas as pd
 import requests
 from io import StringIO
 import datetime
+import functools
 
 def load_sp500_fromlist( years_back ):
     sp500_all = pd.read_csv( '/mnt/c/Users/hp/Desktop/dinges/fin/experimenteren/tickerlists/sp500_monthly.csv', parse_dates=['date'] )
@@ -49,6 +50,7 @@ def load_eur600( ):
     print(d)
     return d["Ticker"].tolist()
 
+@functools.lru_cache( maxsize=None )   # download each stock only once per session
 def get_stock_data( stock_ticker, years_back ):
     try:
         d_all = yf.Ticker( stock_ticker )

@@ -1,13 +1,17 @@
+"""
+Finds the S&P500 stocks for which the momentum buy signal triggered in the last year,
+and writes them as a table to README.md (this runs daily, to keep the README up to date).
+Run:  python3 buy_signal_alarm.py
+"""
+
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import datetime
 
 # import local classes and functions
 from run_tests import BackTester
-import src.data_loader as data_loader  
+import src.data_loader as data_loader
 import src.feature_engineer as feature_engineer
-import src.analyse_stocks as analyse_stocks
 import src.eval_results as eval_results
 import src.plotter as plotter
 
@@ -15,7 +19,7 @@ import src.plotter as plotter
 # SETTINGS
  
 momentum_factor           = 1.40     # factor by which the stock has to increase - twice in a row
-momentum_interval_in_days = 40       # period in which the momentum the stock should increase by the momentum_factor
+momentum_interval_in_days = 40       # length of each of the two periods in which the stock should increase by the momentum_factor
 track_time                = 365      # in days
 years_back                = 1        # we look for buy signals that triggered in the last how many years?
 X00                       = 500      # 400, 500, or 600. What do we investigate? Enter 500 for S&P 500, 400 for S&P400 ('mid caps') and 600 for 'small caps'
@@ -25,7 +29,7 @@ do_eur_stocks_instead     = False    # if True, we investigate the 600 biggest m
 do_alter_readme           = True     # set to False when doing test runs etc
 append_to_results         = False    # to save data on runs with different momentum factor or momentum interval
 
-# line below is for safety: we only want to write S&P500 data the README.
+# line below is for safety: we only want to write S&P500 data to the README.
 overwrite_readme          = False if (do_eur_stocks_instead or X00!=500 or do_alter_readme!=True) else True   
 
 
@@ -40,7 +44,7 @@ class BuySignalGenerator( BackTester ):
     def run_buy_signal_alarm( self ):
 
         # SET UP a few things before we start evaluating the stocks
-        strategy_dates, strategy_cashflows, strategy_value_rats, control_dates, control_cashflows, control_value_rats = [],[],[],[],[],[]
+        strategy_dates, strategy_cashflows = [],[]
         dates_added = {}   # only known for the S&P500
         if do_eur_stocks_instead:
             stock_tickers = data_loader.load_eur600( )
@@ -64,7 +68,6 @@ class BuySignalGenerator( BackTester ):
             if strategy_value_ratio is not None:
                 print( strategy_value_ratio, strategy_period*365, date0.date(), strategy_yrly_incr_in_perc )
                 plotter.plot_price_vs_time( d, dr, ax1, stock_ticker )
-                strategy_value_rats.append( strategy_value_ratio )
                 strategy_dates.extend( [dr.Date.iloc[0], dr.Date.iloc[-1]] )
                 strategy_cashflows.extend( [ -1,strategy_value_ratio ] )
                 ind = len( b )
@@ -75,7 +78,7 @@ class BuySignalGenerator( BackTester ):
         
 
         # MODIFY DATAFRAME to add column with full name
-        b  = data_loader.get_stock_names( b, 'stock_ticker' )      # adds column: stock_ticker
+        b  = data_loader.get_stock_names( b, 'stock_ticker' )      # adds column: stock_name
         b  = feature_engineer.add_perc_column( b, 'value_ratio' )  # adds column: perc_since_trigger
         bw = b[[ 'trigger_date','stock_ticker','stock_name','perc_since_trigger']]
         
@@ -87,7 +90,7 @@ class BuySignalGenerator( BackTester ):
                            #f"Average increase since trigger: {np.round( np.average(100*(b.value_ratio-1)),1)}%<br>"
                            f"{df_write}" )
         if overwrite_readme:
-            # update the readme file that will be upoaded to github
+            # update the readme file that will be uploaded to github
             with open( "README.md", "r" ) as fr:
                 readme_content = fr.read()
             data_start_tag = "<!-- DATA_START -->"
@@ -98,7 +101,7 @@ class BuySignalGenerator( BackTester ):
             with open( "README.md", "w" ) as fw:
                 fw.write( updated_readme_content )
 
-        # DISPLAY whole list of stocks, including a calculation of their performace
+        # DISPLAY whole list of stocks, including a calculation of their performance
         pd.set_option('display.max_rows', None)
         print( '\n\n',bw)
         utc_flag = True if do_eur_stocks_instead else False

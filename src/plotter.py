@@ -17,4 +17,5 @@ def prettify_and_show( ax1,ax2,strategy,strategy_yrly_incr,control_yrly_incr ):
     ax1.set_ylabel( 'Stock value (norm. to max)', size=s+2 )    
     plt.tight_layout()
     plt.show()
+    plt.close()   # free the figure's memory, else figures pile up when we loop over many settings
 

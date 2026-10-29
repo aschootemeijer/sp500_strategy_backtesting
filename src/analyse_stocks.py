@@ -41,8 +41,9 @@ def control_value_ratio_and_period_and_yearly_increase( d,track_time, date0, ran
     rand_offset_in_d        = np.random.randint( -rand_offset, rand_offset+1 )
     date0                   = date0 + pd.Timedelta(  days=rand_offset_in_d )
     dateend                 = date0 + pd.DateOffset( days=track_time )
-    if dateend > d.Date.max(): return None, None, None, None
     dr                       = d[ (d.Date >= date0) & (d.Date <= dateend) ]
+    if len(dr) < 2:   # too little data, e.g. the buy date is in the last few days, or in the future because of the offset
+        return None, None, None, None
     period_in_yr            = get_period_in_yr( dr )
     value_ratio             = dr.Close.iloc[-1] / dr.Close.iloc[0]
     yearly_increase_in_perc = np.round( 100*( value_ratio ** (1 / period_in_yr) -1 ), 1 )
