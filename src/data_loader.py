@@ -4,9 +4,15 @@ import requests
 from io import StringIO
 import datetime
 import functools
+import os
+
+SP500_MONTHLY_FILE = '/mnt/c/Users/hp/Desktop/dinges/fin/experimenteren/tickerlists/sp500_monthly.csv'   # local file, not in the repository
 
 def load_sp500_fromlist( years_back ):
-    sp500_all = pd.read_csv( '/mnt/c/Users/hp/Desktop/dinges/fin/experimenteren/tickerlists/sp500_monthly.csv', parse_dates=['date'] )
+    if not os.path.exists( SP500_MONTHLY_FILE ):   # e.g. for visitors who cloned the repository
+        print( f'IMPORTANT. {SP500_MONTHLY_FILE} was not found: using the current S&P500 from Wikipedia instead (see README)' )
+        return load_sp500( years_back )
+    sp500_all = pd.read_csv( SP500_MONTHLY_FILE, parse_dates=['date'] )
     then  = datetime.datetime.now() - pd.offsets.DateOffset( years=years_back )
     sp500 = sp500_all[ (sp500_all.date.dt.year == then.year) & (sp500_all.date.dt.month == then.month) ] 
     return sp500.iloc[0,1:].dropna().tolist()

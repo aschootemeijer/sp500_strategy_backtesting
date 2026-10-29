@@ -230,12 +230,12 @@ The framework is built with a modular, OOP approach following the Separation of 
 - Some stocks have been taken out of the S&P500 over time. One can include these by using the log of changes to the Wikipedia S&P500 website. I expect especially the analysis of "Declining" and "Early_recovery" strategy stocks to benefit from this. -->
 - Thanks to the OOP design of the code, it is straightforward to extend it to systematically explore the variables used for buy signal generation (e.g., for the "Momentum" strategy, these variables are how much the stock price increases and in which time period). All that is needed for this is adding one line with a for loop after the "if __name__ is '__main__':" line (per explored variable). This allows for the optimization of these strategies.
 
-<!-- 
 ### Getting started
-- Clone the repository.
-- Install dependencies: pip install pandas numpy yfinance matplotlib
-- Run the backtest with: python3 run_tests.py
--->
+- Clone the repository and install the dependencies: `pip install pandas numpy scipy matplotlib yfinance requests lxml`
+- Run a backtest: `python3 run_tests.py` (the settings are at the top of the script)
+- Find recent buy signals: `python3 buy_signal_alarm.py` (set `do_alter_readme = False` if you don't want it to update the README)
+
+<b>Note on the stock list.</b> For the results above, I used a local file of historical S&P500 members (one list per month since 2008), which is not part of this repository. Without it, `run_tests.py` automatically falls back to today's S&P500 from Wikipedia. That list misses the companies that left the index since then, which are often the ones that performed badly (survivorship bias), so results will be somewhat more optimistic than the ones shown above. To use your own list: make a CSV with a `date` column and one ticker per column, one row per month, and set its path in `SP500_MONTHLY_FILE` in `src/data_loader.py`. The same goes for the optional European stock list (`eur600.csv`), which is only used by `buy_signal_alarm.py` when `do_eur_stocks_instead = True`.
 
 <!-- One can simply change:
 if __name__ == '__main__':
