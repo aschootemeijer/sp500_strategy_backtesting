@@ -21,7 +21,7 @@ For the strategy tested in Result highlight (1), we obtain the stocks for which 
 <b>Guidelines for investors:</b> i) after the buy signal triggers, buy within 1-2 months; ii) around 1 year after the buy signal triggers, these stocks are meant to be sold, as they are expected to become less profitable.
 
 <!-- DATA_START -->
-Last automatic update: 2026-11-26 09:59<br>
+Last automatic update: 2026-11-27 09:59<br>
 Buy signal trigger: at least 40% increase in two successive 40 day periods<br>
 <table border="1" class="dataframe">
   <thead>
